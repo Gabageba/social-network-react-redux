@@ -1,0 +1,23 @@
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+  height: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.name {
+  font-size: 17px;
+}
+
+.user {
+  margin-bottom: 10px;
+}
+
+.content {
+}
+
+.postBlock {
+  margin-bottom: 20px;
+}

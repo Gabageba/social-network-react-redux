@@ -1,0 +1,18 @@
+.messages {
+  /*padding: 10px;*/
+}
+
+.infoBlock {
+  height: 48px;
+  border-bottom: 1px solid #333333;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+.name {
+  margin-left: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%)
+}

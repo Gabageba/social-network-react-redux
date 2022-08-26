@@ -1,3 +1,38 @@
 .nav {
   grid-area: nav;
+  width: 200px;
+  position: fixed;
+  /*width: 100%;*/
+}
+
+.block {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /*background-color: #C3073F;*/
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.link {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  /*margin-left: 10px;*/
+  font-size: 15px;
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.block:hover {
+  background-color: #222222;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  margin-left: 15px;
 }

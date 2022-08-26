@@ -1,0 +1,40 @@
+.dialog {
+  padding-left: 15px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  /*border: 1px solid transparent;*/
+}
+
+.dialog:hover {
+  background-color: #333333;
+  /*border: 1px solid #555555;*/
+  box-sizing: border-box;
+}
+
+.active {
+  color: #C3073F;
+}
+
+.name {
+  font-size: 17px;
+  height: 100%;
+}
+
+.image {
+  width: 45px;
+  border-radius: 50%;
+  height: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.line {
+  border-bottom: 1px solid #333333;
+  margin-top: 10px;
+  margin-left: 55px;
+  overflow: hidden;
+}

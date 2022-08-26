@@ -1,0 +1,25 @@
+.dialogs {
+  border-right: 1px solid #333333;
+}
+
+.input {
+  background-image: url("../../../assets/search.png") ;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-color: transparent;
+  background-position: 15px;
+  border-right: none;
+  border-bottom: 1px solid #333333;
+  border-left: none;
+  border-top: none;
+  /*height: 64px;*/
+  outline: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 15px;
+  color: white;
+  width: 100%;
+  padding-left: 45px;
+  box-sizing: border-box;
+}
+

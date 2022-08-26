@@ -1,0 +1,52 @@
+.profileInfo {
+  /*height: 100%;*/
+  margin-bottom: 20px;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.status {
+  /*margin-top: 3px;*/
+  font-size: 15px;
+  margin-bottom: 15px;
+  color: #828282;
+}
+
+.line {
+  border-bottom: 1px solid #333333;
+  margin-bottom: 15px;
+}
+
+.header {
+  color: #828282;
+}
+
+.additionalInfo {
+  font-size: 15px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-bottom: 10px;
+}
+
+.content {
+  color: #C3073F;
+}
+
+.button {
+  width: 100%;
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #C3073F;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #333333;
+}
