@@ -18,7 +18,16 @@
 }
 
 .active {
-  color: #C3073F;
+  padding-left: 15px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  background-color: #C3073F;
 }
 
 .name {
