@@ -1,3 +1,29 @@
 .message {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  margin-left: 30px;
+}
 
+.messageIndents {
+  margin-top: 20px;
+}
+
+.avatar {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.text {
+  margin-left: 10px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.messageText {
+  margin-top: 5px;
+  font-size: 14px;
+  grid-column: 2;
 }
