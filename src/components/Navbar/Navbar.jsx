@@ -6,13 +6,13 @@ import music from '../../assets/music-note.png'
 import settings from '../../assets/setting.png'
 import message from '../../assets/message.png'
 import {NavLink} from 'react-router-dom'
-import {DIALOGS_ROUTE, MUSIC_ROUTE, MY_PROFILE_ROUTE, NEWS_ROUTE, SETTINGS_ROUTE} from '../../utils/const'
+import {DIALOGS_ROUTE, MUSIC_ROUTE, PROFILE_ROUTE, NEWS_ROUTE, SETTINGS_ROUTE} from '../../utils/const'
 
 const Navbar = () => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to={MY_PROFILE_ROUTE} className={styles.block}>
+      <NavLink to={PROFILE_ROUTE} className={styles.block}>
         <img src={profile} alt="profile" className={styles.icon}/>
         <div className={styles.link}>Мой профиль</div>
       </NavLink>
