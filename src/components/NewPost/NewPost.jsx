@@ -2,10 +2,18 @@ import React from 'react'
 import styles from './NewPost.module.css'
 
 const NewPost = () => {
+
+
   return (
     <div className={`${styles.newPost} contentBlock`}>
-      {/*<div contentEditable className={styles.input} ></div>*/}
-      <input placeholder={'Что нового чел?'} className={styles.input}/>
+      <div style={{display: 'flex'}}>
+        <img className={styles.avatar} src="https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg" alt="Avatar"/>
+        <textarea placeholder={'Что нового чел?'} className={styles.input}/>
+      </div>
+      <div style={{textAlign: 'right'}}>
+        <button className={styles.postButton}>Опубликовать</button>
+      </div>
+
     </div>
   )
 }
