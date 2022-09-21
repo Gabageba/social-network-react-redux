@@ -7,7 +7,7 @@ const DialogsPage = ({messages}) => {
 
 
   return (
-    <div className={styles.dialogsPage + ' ' + 'contentBlock'}>
+    <div className={`${styles.dialogsPage} contentBlock`}>
       <Dialogs dialogsData={messages.dialogsData}/>
       <Messages messagesData={messages.messagesData}/>
     </div>

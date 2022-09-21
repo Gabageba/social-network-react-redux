@@ -12,6 +12,7 @@ button {
   cursor: pointer;
 }
 
+
 .contentBlock {
   padding: 15px;
   background-color: #222222;
@@ -29,4 +30,12 @@ button {
   grid-template-areas:
   'nav content';
   margin-top: 80px;
+}
+
+input, textarea {
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  color: white;
+  outline: none;
 }
