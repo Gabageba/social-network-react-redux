@@ -1,14 +1,9 @@
 import React from 'react'
 import styles from './NewPost.module.css'
 
-const NewPost = () => {
+const NewPost = ({addPost}) => {
 
   let newPostElement = React.createRef()
-
-  let addPost = () => {
-    let text = newPostElement.current.value
-    alert(text)
-  }
 
   return (
     <div className={`${styles.newPost} contentBlock`}>

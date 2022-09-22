@@ -3,13 +3,9 @@ import styles from './NewMessage.module.css'
 import attach from './../../../../assets/attachment.png'
 import send from './../../../../assets/send.png'
 
-const NewMessage = () => {
+const NewMessage = ({sendMessage}) => {
 
   let messageRef = React.createRef()
-
-  const sendMessage = () => {
-    alert(messageRef.current.value)
-  }
 
   return (
     <div className={styles.newMessage}>

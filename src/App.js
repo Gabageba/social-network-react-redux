@@ -10,7 +10,7 @@ import News from './pages/News/News'
 import Music from './pages/Music/Music'
 import Settings from './pages/Settings/Settings'
 
-const App = ({state}) => {
+const App = ({state, addPost, sendMessage}) => {
   return (
     <BrowserRouter>
       <div>
@@ -19,8 +19,8 @@ const App = ({state}) => {
           <Navbar/>
           <div className="appContent">
             <Routes>
-              <Route element={<ProfilePage profile={state.profile}/>} path={PROFILE_ROUTE}/>
-              <Route element={<DialogsPage messages={state.dialogs}/>} path={DIALOGS_ROUTE + '/*'}/>
+              <Route element={<ProfilePage profile={state.profile} addPost={addPost}/>} path={PROFILE_ROUTE}/>
+              <Route element={<DialogsPage messages={state.dialogs} sendMessage={sendMessage}/>} path={DIALOGS_ROUTE + '/*'}/>
               <Route element={<News/>} path={NEWS_ROUTE}/>
               <Route element={<Music/>} path={MUSIC_ROUTE}/>
               <Route element={<Settings/>} path={SETTINGS_ROUTE}/>
