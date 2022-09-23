@@ -1,7 +1,7 @@
 .dialogsPage {
   display: grid;
   grid-template-columns: 4fr 10fr;
-  padding: 0;
+  padding: 0 !important;
   height: 90vh;
 }
 

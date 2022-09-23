@@ -5,14 +5,14 @@ import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import NewPost from '../../components/NewPost/NewPost'
 
-const ProfilePage = ({profile, addPost}) => {
+const ProfilePage = ({profile, addPost, updateNewPostText}) => {
 
   return (
     <div className={styles.profile}>
       <Avatar/>
       <div className={styles.rightBlock}>
         <ProfileInfo/>
-        <NewPost addPost={addPost}/>
+        <NewPost addPost={addPost} updateNewPostText={updateNewPostText} newPostText={profile.newPostText}/>
         <MyPosts postData={profile.postData}/>
       </div>
     </div>

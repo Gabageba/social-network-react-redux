@@ -3,14 +3,15 @@ import styles from './NewMessage.module.css'
 import attach from './../../../../assets/attachment.png'
 import send from './../../../../assets/send.png'
 
-const NewMessage = ({sendMessage}) => {
-
-  let messageRef = React.createRef()
+const NewMessage = ({sendMessage, newMessageText, updateNewMessageText}) => {
 
   return (
     <div className={styles.newMessage}>
       <img src={attach} alt="attach"/>
-      <input ref={messageRef} className={styles.input} placeholder={'Введите новое сообщение'}></input>
+      <input className={styles.input}
+             placeholder={'Введите новое сообщение'}
+             onChange={e => updateNewMessageText(e.target.value)}
+             value={newMessageText}/>
       <img src={send} alt="send" onClick={sendMessage}/>
     </div>
   )

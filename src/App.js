@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
@@ -10,7 +9,7 @@ import News from './pages/News/News'
 import Music from './pages/Music/Music'
 import Settings from './pages/Settings/Settings'
 
-const App = ({state, addPost, sendMessage}) => {
+const App = ({state, addPost, sendMessage, updateNewMessageText, updateNewPostText}) => {
   return (
     <BrowserRouter>
       <div>
@@ -19,8 +18,14 @@ const App = ({state, addPost, sendMessage}) => {
           <Navbar/>
           <div className="appContent">
             <Routes>
-              <Route element={<ProfilePage profile={state.profile} addPost={addPost}/>} path={PROFILE_ROUTE}/>
-              <Route element={<DialogsPage messages={state.dialogs} sendMessage={sendMessage}/>} path={DIALOGS_ROUTE + '/*'}/>
+              <Route element={<ProfilePage profile={state.profile}
+                                           addPost={addPost}
+                                           updateNewPostText={updateNewPostText}/>}
+                     path={PROFILE_ROUTE}/>
+              <Route element={<DialogsPage messages={state.dialogs}
+                                           sendMessage={sendMessage}
+                                           updateNewMessageText={updateNewMessageText}/>}
+                     path={DIALOGS_ROUTE + '/*'}/>
               <Route element={<News/>} path={NEWS_ROUTE}/>
               <Route element={<Music/>} path={MUSIC_ROUTE}/>
               <Route element={<Settings/>} path={SETTINGS_ROUTE}/>
