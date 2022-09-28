@@ -88,41 +88,39 @@ export const store = {
   getState() {
     return this._state
   },
-  updateNewMessageText(text) {
-    this._state.dialogs.newMessageText = text
-    this._callSubscriber(this._state)
-  },
-  sendMessage() {
-    const lastId = this._state.dialogs.messagesData.slice(-1)[0].id
+  dispatch(action) {
+    if (action.type === 'ADD_POST') {
+      const lastId = this._state.profile.postData.slice(0)[0].id
 
-    let newMessage =  {
-      id: lastId + 1,
-      userId: 2,
-      userImg: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-      userName: 'Имя фамилия',
-      message: this._state.dialogs.newMessageText
+      const newPost = {
+        id: lastId + 1,
+        name: 'Имя Фамилия',
+        avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
+        message: this._state.profile.newPostText
+      }
+      this._state.profile.postData.unshift(newPost)
+      this._state.profile.newPostText = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+      this._state.profile.newPostText = action.text
+      this._callSubscriber(this._state)
+    } else if (action.type === 'SEND_MESSAGE') {
+      const lastId = this._state.dialogs.messagesData.slice(-1)[0].id
+
+      let newMessage =  {
+        id: lastId + 1,
+        userId: 2,
+        userImg: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
+        userName: 'Имя фамилия',
+        message: this._state.dialogs.newMessageText
+      }
+
+      this._state.dialogs.messagesData.push(newMessage)
+      this._state.dialogs.newMessageText = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
+      this._state.dialogs.newMessageText = action.text
+      this._callSubscriber(this._state)
     }
-
-    this._state.dialogs.messagesData.push(newMessage)
-    this.updateNewMessageText('')
-    this._callSubscriber(this._state)
-  },
-  updateNewPostText(text) {
-    this._state.profile.newPostText = text
-    this._callSubscriber(this._state)
-  },
-  addPost() {
-    const lastId = this._state.profile.postData.slice(0)[0].id
-
-    const newPost = {
-      id: lastId + 1,
-      name: 'Имя Фамилия',
-      avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-      message: this._state.profile.newPostText
-    }
-
-    this._state.profile.postData.unshift(newPost)
-    this.updateNewPostText('')
-    this._callSubscriber(this._state)
   }
 }

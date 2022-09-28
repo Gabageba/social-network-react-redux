@@ -3,7 +3,7 @@ import styles from './Messages.module.css'
 import Message from './Message/Message'
 import NewMessage from './NewMessage/NewMessage'
 
-const Messages = ({messagesData, sendMessage, updateNewMessageText, newMessageText}) => {
+const Messages = ({messagesData, dispatch, newMessageText}) => {
 
   let prev = ''
 
@@ -23,8 +23,7 @@ const Messages = ({messagesData, sendMessage, updateNewMessageText, newMessageTe
           }
         })
       }
-     <NewMessage sendMessage={sendMessage}
-                 updateNewMessageText={updateNewMessageText}
+     <NewMessage dispatch={dispatch}
                  newMessageText={newMessageText}/>
     </div>
   )
