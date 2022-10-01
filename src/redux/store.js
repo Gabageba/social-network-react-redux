@@ -1,3 +1,8 @@
+const SEND_MESSAGE = 'SEND-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
 export const store = {
   _state: {
     profile: {
@@ -89,7 +94,7 @@ export const store = {
     return this._state
   },
   dispatch(action) {
-    if (action.type === 'ADD_POST') {
+    if (action.type === ADD_POST) {
       const lastId = this._state.profile.postData.slice(0)[0].id
 
       const newPost = {
@@ -101,10 +106,10 @@ export const store = {
       this._state.profile.postData.unshift(newPost)
       this._state.profile.newPostText = ''
       this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profile.newPostText = action.text
       this._callSubscriber(this._state)
-    } else if (action.type === 'SEND_MESSAGE') {
+    } else if (action.type === SEND_MESSAGE) {
       const lastId = this._state.dialogs.messagesData.slice(-1)[0].id
 
       let newMessage =  {
@@ -118,9 +123,28 @@ export const store = {
       this._state.dialogs.messagesData.push(newMessage)
       this._state.dialogs.newMessageText = ''
       this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE_NEW_MESSAGE_TEXT') {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogs.newMessageText = action.text
       this._callSubscriber(this._state)
     }
   }
 }
+
+export const sendMessageActionCreator = () => ({
+  type: SEND_MESSAGE
+})
+
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  text
+})
+
+export const addPostActionCreator = () => ({
+  type: ADD_POST
+})
+
+export const updateNewPostTextActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  text
+})
+

@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from './NewPost.module.css'
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../redux/store'
 
 const NewPost = ({dispatch, newPostText}) => {
+
+
 
   return (
     <div className={`${styles.newPost} contentBlock`}>
@@ -10,10 +13,10 @@ const NewPost = ({dispatch, newPostText}) => {
         <textarea  placeholder={'Что нового чел?'}
                    className={styles.input}
                    value={newPostText}
-                   onChange={e => dispatch({type: 'UPDATE_NEW_POST_TEXT', text: e.target.value})}/>
+                   onChange={e => dispatch(updateNewPostTextActionCreator(e.target.value))}/>
       </div>
       <div style={{textAlign: 'right'}}>
-        <button className={styles.postButton} onClick={() => dispatch({type: 'ADD_POST'})}>Опубликовать</button>
+        <button className={styles.postButton} onClick={() => dispatch(addPostActionCreator())}>Опубликовать</button>
       </div>
 
     </div>
