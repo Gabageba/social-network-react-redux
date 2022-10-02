@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './NewMessage.module.css'
 import attach from './../../../../assets/attachment.png'
 import send from './../../../../assets/send.png'
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from '../../../../redux/store'
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from '../../../../redux/dialogsReducer'
 
 
 const NewMessage = ({newMessageText, dispatch}) => {

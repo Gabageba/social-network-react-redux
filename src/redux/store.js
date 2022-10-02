@@ -1,7 +1,5 @@
-const SEND_MESSAGE = 'SEND-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+import {profileReducer} from './profileReducer'
+import {dialogsReducer} from './dialogsReducer'
 
 export const store = {
   _state: {
@@ -94,57 +92,9 @@ export const store = {
     return this._state
   },
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const lastId = this._state.profile.postData.slice(0)[0].id
-
-      const newPost = {
-        id: lastId + 1,
-        name: 'Имя Фамилия',
-        avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-        message: this._state.profile.newPostText
-      }
-      this._state.profile.postData.unshift(newPost)
-      this._state.profile.newPostText = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profile.newPostText = action.text
-      this._callSubscriber(this._state)
-    } else if (action.type === SEND_MESSAGE) {
-      const lastId = this._state.dialogs.messagesData.slice(-1)[0].id
-
-      let newMessage =  {
-        id: lastId + 1,
-        userId: 2,
-        userImg: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-        userName: 'Имя фамилия',
-        message: this._state.dialogs.newMessageText
-      }
-
-      this._state.dialogs.messagesData.push(newMessage)
-      this._state.dialogs.newMessageText = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.dialogs.newMessageText = action.text
-      this._callSubscriber(this._state)
-    }
+    this._state.profile = profileReducer(this._state.profile, action)
+    this._state.dialogs = dialogsReducer(this._state.dialogs, action)
+    this._callSubscriber(this._state)
   }
 }
-
-export const sendMessageActionCreator = () => ({
-  type: SEND_MESSAGE
-})
-
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  text
-})
-
-export const addPostActionCreator = () => ({
-  type: ADD_POST
-})
-
-export const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  text
-})
 
