@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Messages.module.css'
 import Message from './Message/Message'
-import NewMessage from './NewMessage/NewMessage'
+import NewMessageContainer from './NewMessage/NewMessageContainer'
 
-const Messages = ({messagesData, dispatch, newMessageText}) => {
+const Messages = ({messagesData, store}) => {
 
   let prev = ''
 
@@ -23,8 +23,7 @@ const Messages = ({messagesData, dispatch, newMessageText}) => {
           }
         })
       }
-     <NewMessage dispatch={dispatch}
-                 newMessageText={newMessageText}/>
+     <NewMessageContainer store={store}/>
     </div>
   )
 }

@@ -9,7 +9,7 @@ import News from './pages/News/News'
 import Music from './pages/Music/Music'
 import Settings from './pages/Settings/Settings'
 
-const App = ({state,dispatch}) => {
+const App = ({state,store}) => {
   return (
     <BrowserRouter>
       <div>
@@ -19,10 +19,10 @@ const App = ({state,dispatch}) => {
           <div className="appContent">
             <Routes>
               <Route element={<ProfilePage profile={state.profile}
-                                           dispatch={dispatch}/>}
+                                           store={store}/>}
                      path={PROFILE_ROUTE}/>
               <Route element={<DialogsPage messages={state.dialogs}
-                                           dispatch={dispatch}/>}
+                                           store={store}/>}
                      path={DIALOGS_ROUTE + '/*'}/>
               <Route element={<News/>} path={NEWS_ROUTE}/>
               <Route element={<Music/>} path={MUSIC_ROUTE}/>

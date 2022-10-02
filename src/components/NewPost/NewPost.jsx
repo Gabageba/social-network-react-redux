@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './NewPost.module.css'
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../redux/profileReducer'
 
-const NewPost = ({dispatch, newPostText}) => {
+const NewPost = ({updateNewPostText, addPost, newPostText}) => {
 
 
 
@@ -13,10 +12,10 @@ const NewPost = ({dispatch, newPostText}) => {
         <textarea  placeholder={'Что нового чел?'}
                    className={styles.input}
                    value={newPostText}
-                   onChange={e => dispatch(updateNewPostTextActionCreator(e.target.value))}/>
+                   onChange={e => updateNewPostText(e.target.value)}/>
       </div>
       <div style={{textAlign: 'right'}}>
-        <button className={styles.postButton} onClick={() => dispatch(addPostActionCreator())}>Опубликовать</button>
+        <button className={styles.postButton} onClick={addPost}>Опубликовать</button>
       </div>
 
     </div>
