@@ -17,5 +17,5 @@ const rerenderEntireTree = (state) => {
 }
 
 rerenderEntireTree(store.getState())
-store.subscribe(rerenderEntireTree)
+store.subscribe(() => rerenderEntireTree(store.getState()))
 
