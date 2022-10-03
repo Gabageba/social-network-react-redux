@@ -5,14 +5,14 @@ import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import NewPostContainer from '../../components/NewPost/NewPostContainer'
 
-const ProfilePage = ({profile, store}) => {
+const ProfilePage = ({profile}) => {
 
   return (
     <div className={styles.profile}>
       <Avatar/>
       <div className={styles.rightBlock}>
         <ProfileInfo/>
-        <NewPostContainer store={store}/>
+        <NewPostContainer/>
         <MyPosts postData={profile.postData}/>
       </div>
     </div>

@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom/client'
 import React from 'react'
 import App from './App'
 import {store} from './redux/store'
+import {Provider} from './StoreContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 const rerenderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state}
-           store={store}
-      />
+      <Provider store={store}>
+        <App state={state}/>
+      </Provider>
     </React.StrictMode>
   )
 }

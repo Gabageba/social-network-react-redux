@@ -3,7 +3,7 @@ import styles from './Messages.module.css'
 import Message from './Message/Message'
 import NewMessageContainer from './NewMessage/NewMessageContainer'
 
-const Messages = ({messagesData, store}) => {
+const Messages = ({messagesData}) => {
 
   let prev = ''
 
@@ -23,7 +23,7 @@ const Messages = ({messagesData, store}) => {
           }
         })
       }
-     <NewMessageContainer store={store}/>
+     <NewMessageContainer/>
     </div>
   )
 }
