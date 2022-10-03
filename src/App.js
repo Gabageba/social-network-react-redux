@@ -20,8 +20,8 @@ const App = ({state}) => {
             <Routes>
               <Route element={<ProfilePage profile={state.profile}/>}
                      path={PROFILE_ROUTE}/>
-              {/*<Route element={<DialogsPage messages={state.dialogs}/>}*/}
-              {/*       path={DIALOGS_ROUTE + '/*'}/>*/}
+              <Route element={<DialogsPage messages={state.dialogs}/>}
+                     path={DIALOGS_ROUTE + '/*'}/>
               <Route element={<News/>} path={NEWS_ROUTE}/>
               <Route element={<Music/>} path={MUSIC_ROUTE}/>
               <Route element={<Settings/>} path={SETTINGS_ROUTE}/>

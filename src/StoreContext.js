@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StoreContext = React.createContext(null)
+export const StoreContext = React.createContext(null)
 
 export const Provider = ({store, children}) => {
   return (
