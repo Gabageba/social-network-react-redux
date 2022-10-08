@@ -28,6 +28,8 @@ const initialState = {
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
+      const stateCopy = {...state}
+      stateCopy.postData = [...state.postData]
       const lastId = state.postData.slice(0)[0].id
       const newPost = {
         id: lastId + 1,
@@ -35,8 +37,6 @@ export const profileReducer = (state = initialState, action) => {
         avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
         message: state.newPostText
       }
-      const stateCopy = {...state}
-      stateCopy.postData = [...state.postData]
       stateCopy.postData.unshift(newPost)
       stateCopy.newPostText = ''
       return stateCopy
