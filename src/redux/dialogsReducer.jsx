@@ -59,9 +59,7 @@ const initialState = {
 
 export const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEND_MESSAGE: {
-      const stateCopy = {...state}
-      stateCopy.messagesData = [...state.messagesData]
+    case SEND_MESSAGE:
       const lastId = state.messagesData.slice(-1)[0].id
       const newMessage = {
         id: lastId + 1,
@@ -70,16 +68,16 @@ export const dialogsReducer = (state = initialState, action) => {
         userName: 'Имя фамилия',
         message: state.newMessageText
       }
-      stateCopy.messagesData.push(newMessage)
-      stateCopy.newMessageText = ''
-      return stateCopy
-    }
-
+      return {
+        ...state,
+        messagesData: [...state.messagesData, newMessage],
+        newMessageText: ''
+      }
     case UPDATE_NEW_MESSAGE_TEXT:
-      const stateCopy = {...state}
-      stateCopy.newMessageText = action.text
-      return stateCopy
-
+      return {
+        ...state,
+        newMessageText: action.text
+      }
     default:
       return state
   }
