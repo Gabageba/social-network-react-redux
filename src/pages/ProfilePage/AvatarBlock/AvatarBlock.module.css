@@ -1,0 +1,67 @@
+.avatarBlock {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #424242;
+  box-sizing: border-box;
+}
+
+.cover {
+  height: 303px;
+  background-color: #9A7B87;
+  width: 100%;
+  z-index: 1;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #141414;
+  margin-top: -98px;
+}
+
+.infoBlock {
+  margin-top: -25px;
+  z-index: 1;
+  background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainInfo {
+  display: flex;
+}
+
+.name {
+  line-height: 26px;
+  color: #e1e3e6;
+}
+
+.status {
+  font-size: 16px;
+}
+
+.additionalInfoButton {
+  display: flex;
+  margin-top: 6px;
+  padding: 3px 5px 2px;
+  margin-left: -5px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s ease-in-out;
+}
+
+.additionalInfoButton:hover {
+  background: #333333;
+}
+
+.additionalInfo {
+  display: flex;
+  color: #939393;
+  margin-right: 12px;
+  align-items: center;
+}
+
+.additionalInfo img {
+  margin-right: 4px;
+}

@@ -1,17 +1,15 @@
 import React from 'react'
 import styles from './ProfilePage.module.css'
-import Avatar from './Avatar/Avatar'
 import MyPosts from './MyPosts/MyPosts'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
-import NewPostContainer from '../../components/NewPost/NewPostContainer'
+import NewPostContainer from '../DialogsPage/NewPost/NewPostContainer'
+import AvatarBlock from './AvatarBlock/AvatarBlock'
 
 const ProfilePage = ({profile}) => {
 
   return (
     <div className={styles.profile}>
-      <Avatar/>
+      <AvatarBlock/>
       <div className={styles.rightBlock}>
-        <ProfileInfo/>
         <NewPostContainer/>
         <MyPosts postData={profile.postData}/>
       </div>

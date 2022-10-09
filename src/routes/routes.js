@@ -1,6 +1,7 @@
-import {DIALOGS_ROUTE, MY_PROFILE_ROUTE} from '../utils/const'
+import {DIALOGS_ROUTE, MY_PROFILE_ROUTE, USERS_ROUTE} from '../utils/const'
 import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import DialogsPage from '../pages/DialogsPage/DialogsPage'
+import UsersPage from '../pages/UsersPage/UsersPage'
 
 
 export const publicRoutes = [
@@ -11,5 +12,9 @@ export const publicRoutes = [
   {
     path: DIALOGS_ROUTE,
     element: <DialogsPage/>
+  },
+  {
+    path: USERS_ROUTE,
+    element: <UsersPage/>
   }
 ]

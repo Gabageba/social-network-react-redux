@@ -1,33 +1,33 @@
 .nav {
   grid-area: nav;
-  width: 200px;
-  position: fixed;
+  width: 151px;
   background-color: #141414;
   height: 100%;
-  /*width: 100%;*/
   z-index: 1;
   top:0;
-  padding-top: 80px;
+  margin-left: -6px;
+  margin-right: 16px;
+
 }
 
 .block {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  /*background-color: #C3073F;*/
   border-radius: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
   cursor: pointer;
   width: 100%;
   display: flex;
   text-decoration: none;
+  align-items: center;
 }
 
 .link {
   font-family: Roboto, sans-serif;
-  font-weight: 300;
-  /*margin-left: 10px;*/
-  font-size: 15px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 30px;
   text-decoration: none;
-  color: #fff;
+  color: #e1e3e6;
 }
 
 
@@ -35,11 +35,6 @@
   background-color: #222222;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 15px;
-  margin-left: 15px;
+.block svg {
+  margin-right: 10px;
 }
