@@ -1,7 +1,6 @@
 body {
-  color: #fff;
+  color: #e1e3e6;
   background-color: #141414;
-  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -9,6 +8,7 @@ body {
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -23,7 +23,7 @@ p {
 }
 
 button {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   color: #e1e3e6;
@@ -32,9 +32,32 @@ button {
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
+button:hover {
+  background: #515151;
+}
 
+button:active {
+  opacity: 0.8;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #B2B2B2;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #B2B2B2;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #B2B2B2;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #B2B2B2;
+}
 
 .contentWrapper {
   /*display: flex;*/

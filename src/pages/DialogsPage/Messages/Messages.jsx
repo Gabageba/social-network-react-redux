@@ -10,7 +10,7 @@ const Messages = ({messagesData}) => {
   return (
     <div className={styles.messages}>
       <div className={styles.infoBlock}>
-        <div className={styles.name}>Имя Фамилия</div>
+        <h4 className={styles.name}>Имя Фамилия</h4>
       </div>
       {
         messagesData.map(message => {

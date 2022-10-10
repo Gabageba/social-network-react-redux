@@ -9,11 +9,18 @@
   box-sizing: border-box;
   position: relative;
   width: 100%;
+  align-items: center;
+  display: flex;
 }
 
 .name {
   margin-left: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%)
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*transform: translate(0, -50%)*/
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #e1e3e6
+;
 }

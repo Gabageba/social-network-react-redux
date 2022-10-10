@@ -5,13 +5,13 @@ const initialState = {
   postData: [
     {
       id: 3,
-      name: 'Имя Фамилия',
-      avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
+      name: 'Александр Пантелеев',
+      avatar: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
       message: 'Hello motherfucker'
     },
     {
       id: 2,
-      name: 'Александр Пантелеев',
+      name: 'No name',
       avatar: 'https://a.d-cd.net/1a424f2s-960.jpg',
       message: 'Fuck you'
     },
@@ -31,8 +31,8 @@ export const profileReducer = (state = initialState, action) => {
       const lastId = state.postData.slice(0)[0].id
       const newPost = {
         id: lastId + 1,
-        name: 'Имя Фамилия',
-        avatar: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
+        name: 'Александр Пантелеев',
+        avatar: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
         message: state.newPostText
       }
       return {

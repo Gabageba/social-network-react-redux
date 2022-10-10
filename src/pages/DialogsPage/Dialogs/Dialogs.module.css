@@ -16,10 +16,18 @@
   outline: none;
   padding-top: 15px;
   padding-bottom: 15px;
-  font-size: 15px;
   color: white;
   width: 100%;
   padding-left: 45px;
   box-sizing: border-box;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.line {
+  border-bottom: 1px solid #333333;
+  margin-left: 55px;
+  overflow: hidden;
 }
 

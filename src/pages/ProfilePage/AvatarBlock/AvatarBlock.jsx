@@ -26,7 +26,7 @@ const AvatarBlock = () => {
           </div>
         </div>
         <div>
-          <button>Редактировать профиль</button>
+          <button className={styles.editButton}>Редактировать профиль</button>
         </div>
 
       </div>

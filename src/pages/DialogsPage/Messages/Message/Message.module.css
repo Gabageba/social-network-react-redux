@@ -1,3 +1,8 @@
+.messages {
+  padding-top: 6px;
+  padding-bottom: 7px;
+}
+
 .message {
   display: grid;
   grid-template-columns: 40px 1fr;
@@ -5,25 +10,31 @@
 }
 
 .messageIndents {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 
 .avatar {
-  width: 40px;
+  width: 36px;
   border-radius: 50%;
 }
 
 .text {
   margin-left: 10px;
+  margin-top: -3px;
 }
 
 .name {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15px;
+  color: #C3073F;
+  margin-top: -5px;
 }
 
 .messageText {
-  margin-top: 5px;
-  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  /*margin-top: 3px;*/
+  font-size: 13px;
   grid-column: 2;
 }

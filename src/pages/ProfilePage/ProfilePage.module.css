@@ -9,6 +9,7 @@
 }
 
 .rightBlock {
-  width: 100%;
+  /*width: 100%;*/
+  max-width: 550px;
   margin-top: 16px;
 }

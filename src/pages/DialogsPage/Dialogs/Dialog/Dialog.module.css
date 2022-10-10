@@ -31,14 +31,18 @@
 }
 
 .name {
-  font-size: 17px;
-  height: 100%;
+  margin-top: 3px;
+  margin-bottom: 7px;
+  font-size: 13px;
+  line-height: 14px;
+  font-weight: 500;
+  /*height: 100%;*/
 }
 
 .image {
-  width: 45px;
+  width: 46px;
   border-radius: 50%;
-  height: 45px;
+  height: 46px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
@@ -48,5 +52,12 @@
   border-bottom: 1px solid #333333;
   margin-top: 10px;
   margin-left: 55px;
-  overflow: hidden;
+  /*overflow: hidden;*/
+}
+
+.message {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 13px;
+  color: #939393;
 }

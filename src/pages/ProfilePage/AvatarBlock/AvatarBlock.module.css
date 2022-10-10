@@ -26,6 +26,7 @@
   background-color: #222222;
   display: flex;
   justify-content: space-between;
+  border: none;
 }
 
 .mainInfo {
@@ -65,3 +66,5 @@
 .additionalInfo img {
   margin-right: 4px;
 }
+
+

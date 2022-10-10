@@ -6,9 +6,12 @@ const Post = ({name, avatar, message}) => {
     <div className={`contentBlock ${styles.postBlock}`}>
       <div className={styles.user}>
         <img className={styles.avatar} src={avatar} alt=""/>
-        <span className={styles.name}>{name}</span>
+        <div>
+          <p className={styles.name}>{name}</p>
+          <p className={styles.date}>13 апреля 2022</p>
+        </div>
       </div>
-      <div className={styles.content}>{message}</div>
+      <p className={styles.content}>{message}</p>
     </div>
   )
 }
