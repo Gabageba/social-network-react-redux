@@ -1,17 +1,17 @@
 import React from 'react'
 import styles from './ProfilePage.module.css'
 import MyPosts from './MyPosts/MyPosts'
-import NewPostContainer from '../DialogsPage/NewPost/NewPostContainer'
 import AvatarBlock from './AvatarBlock/AvatarBlock'
+import NewPost from './NewPost/NewPost'
 
-const ProfilePage = ({profile}) => {
+const ProfilePage = ({postData, updateNewPostText, addPost, newPostText}) => {
 
   return (
     <div className={styles.profile}>
       <AvatarBlock/>
       <div className={styles.rightBlock}>
-        <NewPostContainer/>
-        <MyPosts postData={profile.postData}/>
+        <NewPost newPostText={newPostText} addPost={addPost} updateNewPostText={updateNewPostText}/>
+        <MyPosts postData={postData}/>
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ const initialState = {
     },
     {
       id: 2,
-      name: 'Александр Пантелеев',
+      name: 'No name',
       img: 'https://a.d-cd.net/1a424f2s-960.jpg'
     },
     {
@@ -29,28 +29,28 @@ const initialState = {
       id: 1,
       userId: 1,
       userImg: 'https://a.d-cd.net/1a424f2s-960.jpg',
-      userName: 'Александр Пантелеев',
+      userName: 'No name',
       message: 'блять'
     },
     {
       id: 2,
       userId: 1,
       userImg: 'https://a.d-cd.net/1a424f2s-960.jpg',
-      userName: 'Александр Пантелеев',
+      userName: 'No name',
       message: 'иди в пизду'
     },
     {
       id: 3,
       userId: 2,
-      userImg: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-      userName: 'Имя фамилия',
+      userImg: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
+      userName: 'Александр Пантелеев',
       message: 'такая залупа'
     },
     {
       id: 4,
       userId: 1,
       userImg: 'https://a.d-cd.net/1a424f2s-960.jpg',
-      userName: 'Александр Пантелеев',
+      userName: 'No name',
       message: '123'
     },
   ],
@@ -64,8 +64,8 @@ export const dialogsReducer = (state = initialState, action) => {
       const newMessage = {
         id: lastId + 1,
         userId: 2,
-        userImg: 'https://i.pinimg.com/736x/18/ca/6f/18ca6f28ec97d6afb3117d4b6aece2e6.jpg',
-        userName: 'Имя фамилия',
+        userImg: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
+        userName: 'Александр Пантелеев',
         message: state.newMessageText
       }
       return {
