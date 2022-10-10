@@ -27,7 +27,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink to={USERS_ROUTE} className={styles.block}>
         <FriendsSvg/>
-        <div className={styles.link}>Пользователи</div>
+        <div className={styles.link}>Друзья</div>
       </NavLink>
       <NavLink to={MUSIC_ROUTE} className={styles.block}>
         <MusicSvg/>

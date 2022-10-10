@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  height: 55px;
+  border-bottom: 1px solid #333333;
+  padding-left: 10px;
+  padding-right: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.active {
+  border-bottom: 2px solid #C3073F;
+  margin-top: 2px;
+}
+
+.active h4 {
+  color: #e1e3e6!important;
+}
+
+.switchBlock {
+  display: flex;
+  align-items: center;
+  padding: 18px 6px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.switchBlock h4 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin-right: 6px;
+  color: #939393;
+}
+
+.switchBlock p {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 17px;
+  color: #939393;
+}
+
+.findButton {
+  padding: 5px 16px;
+  background: #E1E3E6;
+  color: #222222;
+}
+
+.findButton:hover {
+  background: #CBCCCF;
+}
+

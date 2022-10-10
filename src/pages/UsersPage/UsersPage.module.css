@@ -1,9 +1,24 @@
-.header {
-  display: flex;
-  height: 55px;
+.input {
+  padding-left: 48px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  background-image: url("./../../assets/search.png") ;
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: 22px;
   border-bottom: 1px solid #333333;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.switchBlock {
-  display: flex;
+.friendsList {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.leftBlock {
+  max-width: 550px;
 }
