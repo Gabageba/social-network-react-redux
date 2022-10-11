@@ -1,0 +1,21 @@
+.userCard {
+  width: 160px;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.infoBlock svg {
+  cursor: pointer;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 14px;
+  color: #C3073F;
+}

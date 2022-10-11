@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './UsersHeader.module.css'
+import {NavLink} from 'react-router-dom'
+import {FIND_FRIENDS_ROUTE} from '../../../utils/const'
 
 const UsersHeader = () => {
   return (
@@ -9,7 +11,9 @@ const UsersHeader = () => {
         <p>69</p>
       </div>
       <div>
-        <button className={styles.findButton}><span>Найти друзей</span></button>
+        <NavLink to={FIND_FRIENDS_ROUTE}>
+          <button className={styles.findButton}><span>Найти друзей</span></button>
+        </NavLink>
       </div>
     </div>
   )

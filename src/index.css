@@ -68,7 +68,7 @@ button:active {
 }
 
 .contentCenter {
-  width: 1160px;
+  width: 1080px;
   margin: 0 auto;
 }
 
@@ -85,4 +85,5 @@ input, textarea {
   background-color: #222222;
   border-radius: 8px;
   border: 1px solid #333333;
+  box-sizing: border-box;
 }
