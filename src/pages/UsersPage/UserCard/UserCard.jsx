@@ -2,13 +2,13 @@ import React from 'react'
 import AddFriendSvg from '../../../components/svgFiles/AddFriendSvg'
 import styles from './UserCard.module.css'
 
-const UserCard = () => {
+const UserCard = ({user}) => {
   return (
     <div className={styles.userCard}>
       <img width={160} height={160} style={{borderRadius: '3px'}}
-           src="https://i.pinimg.com/736x/14/df/bf/14dfbf0e75988b5daa3aaccddba0eb6d.jpg" alt="Avatar"/>
+           src={user.img} alt="Avatar"/>
       <div className={styles.infoBlock}>
-        <p className={styles.name}>Имя фамилия</p>
+        <p className={styles.name}>{user.name}</p>
         <AddFriendSvg/>
       </div>
     </div>

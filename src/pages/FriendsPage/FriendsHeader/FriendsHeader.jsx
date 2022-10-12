@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './UsersHeader.module.css'
+import styles from './FriendsHeader.module.css'
 import {NavLink} from 'react-router-dom'
 import {FIND_FRIENDS_ROUTE} from '../../../utils/const'
 
-const UsersHeader = () => {
+const FriendsHeader = () => {
   return (
     <div className={styles.header}>
       <div className={`${styles.switchBlock} ${styles.active}`}>
@@ -19,4 +19,4 @@ const UsersHeader = () => {
   )
 }
 
-export default UsersHeader
+export default FriendsHeader

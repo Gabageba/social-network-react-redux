@@ -14,10 +14,10 @@ import {
 import News from './pages/News/News'
 import Music from './pages/Music/Music'
 import Settings from './pages/Settings/Settings'
-import UsersPage from './pages/UsersPage/UsersPage'
 import ProfilePageContainer from './pages/ProfilePage/ProfilePageContainer'
 import DialogsPageContainer from './pages/DialogsPage/DialogsPageContainer'
-import FindFriendsPage from './pages/FindFriendsPage/FindFriendsPage'
+import UsersPageContainer from './pages/UsersPage/UsersPageContainer'
+import FriendsPageContainer from './pages/FriendsPage/FriendsPageContainer'
 
 const App = ({state}) => {
   return (
@@ -33,8 +33,8 @@ const App = ({state}) => {
                        path={PROFILE_ROUTE}/>
                 <Route element={<DialogsPageContainer messages={state.dialogs}/>}
                        path={DIALOGS_ROUTE + '/*'}/>
-                <Route element={<UsersPage/>} path={USERS_ROUTE}/>
-                <Route element={<FindFriendsPage/>} path={FIND_FRIENDS_ROUTE}/>
+                <Route element={<FriendsPageContainer/>} path={USERS_ROUTE}/>
+                <Route element={<UsersPageContainer/>} path={FIND_FRIENDS_ROUTE}/>
                 <Route element={<News/>} path={NEWS_ROUTE}/>
                 <Route element={<Music/>} path={MUSIC_ROUTE}/>
                 <Route element={<Settings/>} path={SETTINGS_ROUTE}/>

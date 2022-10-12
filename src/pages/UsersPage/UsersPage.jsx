@@ -1,19 +1,22 @@
 import React from 'react'
 import styles from './UsersPage.module.css'
-import UsersHeader from './UsersHeader/UsersHeader'
-import Friend from './Friend/Friend'
 import FriendsSwitcher from '../../components/FriendsSwitcher/FriendsSwitcher'
+import UserCard from './UserCard/UserCard'
 
-const UsersPage = () => {
+const UsersPage = ({usersData}) => {
   return (
-    <div className={styles.usersPage}>
-      <div className={`contentBlock ${styles.leftBlock}`} style={{padding: 0}}>
-        <UsersHeader/>
-        <input type="text" placeholder={'Поиск друзей'} className={styles.input}/>
-        <div className={styles.friendsList}>
-          <Friend user={{name: 'No name', photo: 'https://a.d-cd.net/1a424f2s-960.jpg'}}/>
-          <Friend user={{name: 'No name', photo: 'https://a.d-cd.net/1a424f2s-960.jpg'}}/>
-          <Friend user={{name: 'No name', photo: 'https://a.d-cd.net/1a424f2s-960.jpg'}}/>
+    <div className={styles.findFriendPage}>
+      <div className={`contentBlock ${styles.users}`}>
+        <div className={styles.header}>
+          <h4>Поиск друзей</h4>
+        </div>
+        <input type="text" placeholder={'Введите запрос'} className={styles.input}/>
+        <div className={styles.cards}>
+          {
+            usersData.map(user => {
+              return <UserCard key={user.id} user={user}/>
+            })
+          }
         </div>
       </div>
       <FriendsSwitcher/>
