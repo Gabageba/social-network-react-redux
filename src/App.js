@@ -9,7 +9,7 @@ import {
   NEWS_ROUTE,
   PROFILE_ROUTE,
   SETTINGS_ROUTE,
-  USERS_ROUTE
+  FRIENDS_ROUTE
 } from './utils/const'
 import News from './pages/News/News'
 import Music from './pages/Music/Music'
@@ -33,7 +33,7 @@ const App = ({state}) => {
                        path={PROFILE_ROUTE}/>
                 <Route element={<DialogsPageContainer messages={state.dialogs}/>}
                        path={DIALOGS_ROUTE + '/*'}/>
-                <Route element={<FriendsPageContainer/>} path={USERS_ROUTE}/>
+                <Route element={<FriendsPageContainer/>} path={FRIENDS_ROUTE}/>
                 <Route element={<UsersPageContainer/>} path={FIND_FRIENDS_ROUTE}/>
                 <Route element={<News/>} path={NEWS_ROUTE}/>
                 <Route element={<Music/>} path={MUSIC_ROUTE}/>

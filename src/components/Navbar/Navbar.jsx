@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Navbar.module.css'
 import {NavLink} from 'react-router-dom'
-import {DIALOGS_ROUTE, MUSIC_ROUTE, PROFILE_ROUTE, NEWS_ROUTE, SETTINGS_ROUTE, USERS_ROUTE} from '../../utils/const'
+import {DIALOGS_ROUTE, MUSIC_ROUTE, PROFILE_ROUTE, NEWS_ROUTE, SETTINGS_ROUTE, FRIENDS_ROUTE} from '../../utils/const'
 import ProfileSvg from '../svgFiles/ProfileSvg'
 import NewsSvg from '../svgFiles/NewsSvg'
 import MessagesSvg from '../svgFiles/MessagesSvg'
@@ -25,7 +25,7 @@ const Navbar = () => {
         <MessagesSvg/>
         <div className={styles.link}>Сообщения</div>
       </NavLink>
-      <NavLink to={USERS_ROUTE} className={styles.block}>
+      <NavLink to={FRIENDS_ROUTE} className={styles.block}>
         <FriendsSvg/>
         <div className={styles.link}>Друзья</div>
       </NavLink>

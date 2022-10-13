@@ -5,7 +5,6 @@ import Friend from './Friend/Friend'
 import FriendsSwitcher from '../../components/FriendsSwitcher/FriendsSwitcher'
 
 const FriendsPage = ({friendsData}) => {
-  console.log(friendsData)
   return (
     <div className={styles.usersPage}>
       <div className={`contentBlock ${styles.leftBlock}`} style={{padding: 0}}>

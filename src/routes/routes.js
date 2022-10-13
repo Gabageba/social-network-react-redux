@@ -1,4 +1,4 @@
-import {DIALOGS_ROUTE, MY_PROFILE_ROUTE, USERS_ROUTE} from '../utils/const'
+import {DIALOGS_ROUTE, MY_PROFILE_ROUTE, FRIENDS_ROUTE} from '../utils/const'
 import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import DialogsPage from '../pages/DialogsPage/DialogsPage'
 import FriendsPage from '../pages/FriendsPage/FriendsPage'
@@ -14,7 +14,7 @@ export const publicRoutes = [
     element: <DialogsPage/>
   },
   {
-    path: USERS_ROUTE,
+    path: FRIENDS_ROUTE,
     element: <FriendsPage/>
   }
 ]

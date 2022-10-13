@@ -9,6 +9,9 @@
   border-radius: 8px;
   margin-bottom: 2px;
   cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  color: #e1e3e6;
 }
 
 .button:hover {
@@ -22,4 +25,8 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+}
+
+.activeButton {
+  background: #333333;
 }

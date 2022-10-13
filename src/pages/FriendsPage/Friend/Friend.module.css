@@ -8,6 +8,7 @@
 .friendBlock img {
   border-radius: 50%;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .infoBlock {
@@ -18,6 +19,11 @@
   font-weight: 700;
   font-size: 13px;
   line-height: 15px;
+  cursor: pointer;
+}
+
+.infoBlock h5:hover {
+  text-decoration: underline  ;
 }
 
 .infoBlock p {
@@ -27,4 +33,8 @@
   line-height: 15px;
   color: #C3073F;
   font-weight: 400;
+}
+
+.infoBlock p:hover {
+  text-decoration: underline;
 }
