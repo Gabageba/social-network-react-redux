@@ -6,12 +6,10 @@ import axios from 'axios'
 
 class UsersPage extends React.Component {
 
-  getUsers = () => {
-    if (this.props.usersData.length === 0) {
-      axios.get('https://social-network.samuraijs.com/api/1.0/users')
-        .then(users => this.props.setUsers(users.data.items))
-
-    }
+  constructor(props) {
+    super(props)
+    axios.get('https://social-network.samuraijs.com/api/1.0/users')
+      .then(users => this.props.setUsers(users.data.items))
   }
 
   render() {
@@ -22,7 +20,6 @@ class UsersPage extends React.Component {
             <h4>Поиск друзей</h4>
           </div>
           <input type="text" placeholder={'Введите запрос'} className={styles.input}/>
-          <button onClick={this.getUsers}>Get users</button>
           <div className={styles.cards}>
             {
               this.props.usersData.map(user => {
