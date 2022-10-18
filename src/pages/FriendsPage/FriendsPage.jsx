@@ -13,7 +13,7 @@ const FriendsPage = ({friendsData}) => {
         <div className={styles.friendsList}>
           {
             friendsData.map(friend => {
-              return <Friend friend={friend}/>
+              return <Friend key={friend.id} friend={friend}/>
             })
           }
         </div>
