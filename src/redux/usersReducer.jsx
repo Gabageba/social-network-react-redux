@@ -3,6 +3,8 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_FRIENDS = 'SET_FRIENDS'
 const DELETE_FRIEND = 'DELETE_FRIEND'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 
 const initialState = {
   usersData: [],
@@ -16,7 +18,10 @@ const initialState = {
     },
     {id: 3, name: 'Конч за 500', followed: true, img: 'https://www.blast.hk/attachments/64805/'},
 
-  ]
+  ],
+  usersPageSize: 9,
+  totalCount: 0,
+  currentPage: 1
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -50,7 +55,11 @@ export const usersReducer = (state = initialState, action) => {
     case SET_FRIENDS:
       return {...state, friendsData: [...state.friendsData, ...action.friends]}
     case SET_USERS:
-      return {...state, usersData: [...state.usersData, ...action.users]}
+      return {...state, usersData: [...action.users]}
+    case SET_CURRENT_PAGE:
+      return {...state, currentPage: action.currentPage}
+    case SET_TOTAL_COUNT:
+      return {...state, totalCount: action.totalCount}
     default:
       return state
   }
@@ -61,3 +70,5 @@ export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
 export const deleteFriendAC = (friendId) => ({type: DELETE_FRIEND, friendId})
 export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const setFriendsAC = (friends) => ({type: SET_FRIENDS, friends})
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})

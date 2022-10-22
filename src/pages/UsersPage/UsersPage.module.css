@@ -45,3 +45,19 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
 }
+
+.pages {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.startFinishPage {
+  display: flex;
+  margin-left: 2px;
+}
+
+.startFinishPage span {
+  display: flex;
+  align-items: flex-end;
+}

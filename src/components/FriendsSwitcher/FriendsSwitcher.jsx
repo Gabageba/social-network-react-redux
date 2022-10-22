@@ -8,10 +8,10 @@ const FriendsSwitcher = () => {
 
   return (
     <div className={`contentBlock ${styles.friendsSwitcher}`}>
-      <NavLink to={FRIENDS_ROUTE} className={`${styles.button} ${location.pathname === FRIENDS_ROUTE ? styles.activeButton : ''}`}>
+      <NavLink to={FRIENDS_ROUTE} className={`${styles.button} ${location.pathname === FRIENDS_ROUTE && styles.activeButton}`}>
         <h4>Мои друзья</h4>
       </NavLink>
-      <NavLink to={FIND_FRIENDS_ROUTE} className={`${styles.button} ${location.pathname === FIND_FRIENDS_ROUTE ? styles.activeButton : ''}`}>
+      <NavLink to={FIND_FRIENDS_ROUTE} className={`${styles.button} ${location.pathname === FIND_FRIENDS_ROUTE && styles.activeButton}`}>
         <h4>Поиск друзей</h4>
       </NavLink>
     </div>

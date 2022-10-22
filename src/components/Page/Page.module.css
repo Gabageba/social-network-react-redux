@@ -1,0 +1,32 @@
+.pageButton {
+  /*padding: 5px 10px;*/
+  padding: 5px;
+  min-width: 20px;
+  /*width: 30px;*/
+  height: 25px;
+  border-radius: 8px;
+  margin-left: 2px;
+  cursor: pointer;
+  display: flex;
+  color: #e1e3e6;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease-in-out;
+}
+
+.pageButtonActive {
+  background-color: #333333;
+}
+
+.pageButton:hover {
+  background-color: #333333;
+}
+
+
+.pageButton p {
+  padding: 0;
+  margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
