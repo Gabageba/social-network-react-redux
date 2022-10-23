@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import FriendsPage from './FriendsPage'
-import {setFriendsAC} from '../../redux/usersReducer'
+import {setFriends} from '../../redux/usersReducer'
 
 const mapStateToProps = (state)  => {
   return {
@@ -8,12 +8,9 @@ const mapStateToProps = (state)  => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFriends: (friends) => dispatch(setFriendsAC(friends))
-  }
-}
 
-const FriendsPageContainer = connect(mapStateToProps, mapDispatchToProps)(FriendsPage)
+const FriendsPageContainer = connect(mapStateToProps, {
+  setFriends
+})(FriendsPage)
 
 export default FriendsPageContainer
