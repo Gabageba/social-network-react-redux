@@ -5,6 +5,7 @@ const SET_FRIENDS = 'SET_FRIENDS'
 const DELETE_FRIEND = 'DELETE_FRIEND'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
+const SET_IS_FETCHING = 'SET_IS_FETCHING'
 
 const initialState = {
   usersData: [],
@@ -21,7 +22,8 @@ const initialState = {
   ],
   usersPageSize: 9,
   totalCount: 0,
-  currentPage: 1
+  currentPage: 1,
+  isFetching: false
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -55,11 +57,13 @@ export const usersReducer = (state = initialState, action) => {
     case SET_FRIENDS:
       return {...state, friendsData: [...state.friendsData, ...action.friends]}
     case SET_USERS:
-      return {...state, usersData: [...action.users]}
+      return {...state, usersData: action.users}
     case SET_CURRENT_PAGE:
       return {...state, currentPage: action.currentPage}
     case SET_TOTAL_COUNT:
       return {...state, totalCount: action.totalCount}
+    case SET_IS_FETCHING:
+      return {...state, isFetching: action.isFetching}
     default:
       return state
   }
@@ -72,3 +76,4 @@ export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const setFriendsAC = (friends) => ({type: SET_FRIENDS, friends})
 export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
+export const setIsFetchingAC = (isFetching) => ({type: SET_IS_FETCHING, isFetching})

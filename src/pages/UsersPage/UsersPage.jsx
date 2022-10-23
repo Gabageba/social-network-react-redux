@@ -3,8 +3,9 @@ import styles from './UsersPage.module.css'
 import UserCard from './UserCard/UserCard'
 import Page from '../../components/Page/Page'
 import FriendsSwitcher from '../../components/FriendsSwitcher/FriendsSwitcher'
+import Loader from '../../components/Loader/Loader'
 
-const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged, follow, unfollow}) => {
+const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged, follow, unfollow, isFetching}) => {
   const pagesCount = Math.ceil(totalCount / pageSize)
   const pages = []
   for (let i = 0; i < pagesCount; i++) {
@@ -21,13 +22,19 @@ const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged,
           <h4>Поиск друзей</h4>
         </div>
         <input type="text" placeholder={'Введите запрос'} className={styles.input}/>
-        <div className={styles.cards}>
-          {
-            usersData.map(user => {
-              return <UserCard key={user.id} user={user} follow={follow} unfollow={unfollow}/>
-            })
-          }
-        </div>
+       <div style={{flex: 1}}>
+         {
+           isFetching
+             ? <Loader/>
+             : <div className={styles.cards}> {
+               usersData.map(user => {
+                 return <UserCard key={user.id} user={user} follow={follow} unfollow={unfollow}/>
+               })
+             }
+             </div>
+         }
+
+       </div>
         <div className={styles.pages}>
           {
             currentPage > 4 &&
