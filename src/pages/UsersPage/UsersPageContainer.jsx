@@ -1,8 +1,7 @@
 import {connect} from 'react-redux'
 import {
   follow,
-  setCurrentPage,
-  setIsFetching,
+  setCurrentPage, setIsUserFetching,
   setTotalCount,
   setUsers,
   unfollow
@@ -14,23 +13,23 @@ import UsersPage from './UsersPage'
 class UsersPageContainer extends React.Component {
 
   componentDidMount() {
-    this.props.setIsFetching(true)
+    this.props.setIsUserFetching(true)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
       .then(users => {
         this.props.setUsers(users.data.items)
         this.props.setTotalCount(users.data.totalCount)
-        this.props.setIsFetching(false)
+        this.props.setIsUserFetching(false)
       })
   }
 
   onPageChanged = (page) => {
-    this.props.setIsFetching(true)
+    this.props.setIsUserFetching(true)
     this.props.setCurrentPage(page)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
       .then(users => {
         this.props.setUsers(users.data.items)
         this.props.setTotalCount(users.data.totalCount)
-        this.props.setIsFetching(false)
+        this.props.setIsUserFetching(false)
       })
   }
 
@@ -54,11 +53,11 @@ const mapStateToProps = (state)  => {
     pageSize: state.users.usersPageSize,
     totalCount: state.users.totalCount,
     currentPage: state.users.currentPage,
-    isFetching: state.users.isFetching
+    isFetching: state.users.isUserFetching
   }
 }
 
 export default connect(mapStateToProps, {
-  follow, unfollow, setUsers, setCurrentPage, setTotalCount, setIsFetching
+  follow, unfollow, setUsers, setCurrentPage, setTotalCount, setIsUserFetching
 })(UsersPageContainer)
 

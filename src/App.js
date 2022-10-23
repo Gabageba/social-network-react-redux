@@ -30,7 +30,7 @@ const App = ({state}) => {
             <div>
               <Routes>
                 <Route element={<ProfilePageContainer profile={state.profile}/>}
-                       path={PROFILE_ROUTE + '/*'}/>
+                       path={PROFILE_ROUTE + '/:userId'}/>
                 <Route element={<DialogsPageContainer messages={state.dialogs}/>}
                        path={DIALOGS_ROUTE + '/*'}/>
                 <Route element={<FriendsPageContainer/>} path={FRIENDS_ROUTE}/>
