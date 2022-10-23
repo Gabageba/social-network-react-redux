@@ -16,7 +16,7 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 3px solid #141414;
+  border: 3px solid #222222;
   margin-top: -98px;
 }
 
@@ -39,7 +39,8 @@
 }
 
 .status {
-  font-size: 16px;
+  font-size: 14px;
+  color: #939393;
 }
 
 .additionalInfoButton {
@@ -48,6 +49,7 @@
   padding: 3px 5px 2px;
   margin-left: -5px;
   cursor: pointer;
+  border-collapse: collapse;
   border-radius: 8px;
   transition: 0.2s ease-in-out;
 }

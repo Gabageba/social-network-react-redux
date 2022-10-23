@@ -25,7 +25,7 @@ const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged,
        <div style={{flex: 1}}>
          {
            isFetching
-             ? <Loader/>
+             ? <Loader size={40}/>
              : <div className={styles.cards}> {
                usersData.map(user => {
                  return <UserCard key={user.id} user={user} follow={follow} unfollow={unfollow}/>
