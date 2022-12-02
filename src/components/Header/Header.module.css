@@ -14,3 +14,8 @@
 .header svg:active {
   transform: translateY(1px);
 }
+
+.loginBlock a {
+  color: white;
+  text-decoration: none;
+}

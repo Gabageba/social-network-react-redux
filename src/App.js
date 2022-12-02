@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import {
@@ -18,12 +17,15 @@ import ProfilePageContainer from './pages/ProfilePage/ProfilePageContainer'
 import DialogsPageContainer from './pages/DialogsPage/DialogsPageContainer'
 import UsersPageContainer from './pages/UsersPage/UsersPageContainer'
 import FriendsPageContainer from './pages/FriendsPage/FriendsPageContainer'
+import HeaderContainer from './components/Header/HeaderContainer'
 
 const App = ({state}) => {
+  window.state = state
+
   return (
     <BrowserRouter>
       <div>
-        <Header/>
+        <HeaderContainer/>
         <div className="contentCenter">
           <div className="contentWrapper">
             <Navbar/>

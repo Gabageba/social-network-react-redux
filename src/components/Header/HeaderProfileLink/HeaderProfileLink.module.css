@@ -1,0 +1,21 @@
+.profileLink {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 48px;
+}
+
+.profileLink:hover {
+  background-color: #323232;
+}
+
+.profileLink img {
+  border-radius: 50%;
+}
+
+.profileLink svg {
+  margin-left: 6px;
+  margin-right: 6px;
+  color: #656565;
+}
