@@ -3,6 +3,7 @@ import Header from './Header'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {setAuthUserData, setAuthUserInfo} from '../../redux/authReducer'
+import {setNavbarProfileMenuVisible} from '../../redux/modalsReducer'
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
@@ -31,7 +32,10 @@ class HeaderContainer extends React.Component {
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   fullName: state.auth.fullName,
-  photo: state.auth.photo
+  photo: state.auth.photo,
+  email: state.auth.email,
+  navbarProfileMenuVisible: state.modals.navbarProfileMenuVisible,
+  userId: state.auth.userId
 })
 
-export default connect(mapStateToProps, {setAuthUserData, setAuthUserInfo})(HeaderContainer)
+export default connect(mapStateToProps, {setAuthUserData, setAuthUserInfo, setNavbarProfileMenuVisible})(HeaderContainer)

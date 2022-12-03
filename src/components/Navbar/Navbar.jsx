@@ -9,11 +9,11 @@ import FriendsSvg from '../svgFiles/FriendsSvg'
 import MusicSvg from '../svgFiles/MusicSvg'
 import SettingsSvg from '../svgFiles/SettingsSvg'
 
-const Navbar = () => {
+const Navbar = ({userId}) => {
 
   return (
     <nav className={styles.nav}>
-      <NavLink to={PROFILE_ROUTE} className={styles.block}>
+      <NavLink to={PROFILE_ROUTE + `/${userId}`} className={styles.block}>
         <ProfileSvg/>
         <div className={styles.link}>Мой профиль</div>
       </NavLink>

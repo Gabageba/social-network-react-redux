@@ -3,13 +3,15 @@ import { profileReducer } from './profileReducer'
 import { dialogsReducer } from './dialogsReducer'
 import { usersReducer } from './usersReducer'
 import {authReducer} from './authReducer'
+import {modalsReducer} from './modalsReducer'
 
 const reducers = combineReducers({
   //объеденить reducer
   profile: profileReducer,
   dialogs: dialogsReducer,
   users: usersReducer,
-  auth: authReducer
+  auth: authReducer,
+  modals: modalsReducer
 })
 
 export const store = createStore(reducers)
