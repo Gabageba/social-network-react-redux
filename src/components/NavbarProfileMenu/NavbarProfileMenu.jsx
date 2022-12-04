@@ -9,22 +9,24 @@ import ExitSvg from '../svgFiles/ExitSvg'
 import {NavLink} from 'react-router-dom'
 import {PROFILE_ROUTE} from '../../utils/const'
 
-const NavbarProfileMenu = ({photo, fullName, email, userId}) => {
+const NavbarProfileMenu = ({photo, fullName, email, userId, navbarProfileMenuVisible}) => {
   return (
-    <div className={`${styles.navBarProfileMenu}`}>
-      <div className={styles.profileLink}>
-        <NavLink className={`contentBlock ${styles.profileInfoBlock}`} to={PROFILE_ROUTE + '/' + userId}>
-          <img src={photo || defaultAvatar} alt="avatar" width={40} height={40}/>
-          <div className={styles.aboutMe}>
-            <h5>{fullName}</h5>
-            <p>{email}</p>
-          </div>
-          <NavbarProfileMenuArrowSvg/>
-        </NavLink>
+    <div className={styles.closeBlock}>
+      <div className={`${styles.navBarProfileMenu} ${navbarProfileMenuVisible ? '' : styles.profileMenuDisable}`}>
+        <div className={styles.profileLink}>
+          <NavLink className={`contentBlock ${styles.profileInfoBlock}`} to={PROFILE_ROUTE + '/' + userId}>
+            <img src={photo || defaultAvatar} alt="avatar" width={40} height={40}/>
+            <div className={styles.aboutMe}>
+              <h5>{fullName}</h5>
+              <p>{email}</p>
+            </div>
+            <NavbarProfileMenuArrowSvg/>
+          </NavLink>
+        </div>
+        <NavbarProfileMenuLink text={'Настройки'} icon={<SettingsSvg/>}/>
+        <NavbarProfileMenuLink text={'Помощь'} icon={<HelpSvg/>}/>
+        <NavbarProfileMenuLink text={'Выйти'} icon={<ExitSvg/>}/>
       </div>
-      <NavbarProfileMenuLink text={'Настройки'} icon={<SettingsSvg/>}/>
-      <NavbarProfileMenuLink text={'Помощь'} icon={<HelpSvg/>}/>
-      <NavbarProfileMenuLink text={'Выйти'} icon={<ExitSvg/>}/>
     </div>
   )
 }
