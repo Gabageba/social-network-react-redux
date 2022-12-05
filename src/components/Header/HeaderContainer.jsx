@@ -1,23 +1,21 @@
 import React from 'react'
 import Header from './Header'
-import axios from 'axios'
 import {connect} from 'react-redux'
 import {setAuthUserData, setAuthUserInfo} from '../../redux/authReducer'
 import {setNavbarProfileMenuVisible} from '../../redux/modalsReducer'
+import {authAPI, profileAPI} from '../../api/api'
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-      withCredentials: true,
-    })
+    authAPI.auth()
       .then(response => {
-        if (response.data.resultCode === 0) {
-          const {id, email, login} = response.data.data
+        if (response.resultCode === 0) {
+          const {id, email, login} = response.data
           this.props.setAuthUserData(id, email, login)
 
-          axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
+          profileAPI.getProfile(id)
             .then(profile => {
-              const {fullName, photos} = profile.data
+              const {fullName, photos} = profile
               this.props.setAuthUserInfo(fullName, photos.small)
             })
         }
@@ -38,4 +36,8 @@ const mapStateToProps = (state) => ({
   userId: state.auth.userId
 })
 
-export default connect(mapStateToProps, {setAuthUserData, setAuthUserInfo, setNavbarProfileMenuVisible})(HeaderContainer)
+export default connect(mapStateToProps, {
+  setAuthUserData,
+  setAuthUserInfo,
+  setNavbarProfileMenuVisible
+})(HeaderContainer)

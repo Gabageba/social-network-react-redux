@@ -5,9 +5,8 @@ import DeleteFriendSvg from '../../../components/svgFiles/deleteFriendSvg'
 import noImage from '../../../assets/noImageLarge.png'
 import {NavLink} from 'react-router-dom'
 import {PROFILE_ROUTE} from '../../../utils/const'
-import axios from 'axios'
 
-const UserCard = ({user, unfollow, follow}) => {
+const UserCard = ({user, unfollowUser, followUser}) => {
   return (
     <div className={styles.userCard}>
       <img width={160} height={160} style={{borderRadius: '3px'}}
@@ -18,38 +17,10 @@ const UserCard = ({user, unfollow, follow}) => {
         </NavLink>
         {
           user.followed
-            ? <div className={styles.button} onClick={() => {
-
-              axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
-                withCredentials: true,
-                headers: {
-                  'API-KEY': '47419082-eeaf-434c-9e6d-50aac0813eae'
-                }
-              })
-                .then(response => {
-                  if (response.data.resultCode === 0) {
-                    unfollow(user.id)
-                  }
-                })
-
-            }}>
+            ? <div className={styles.button} onClick={() => {unfollowUser(user.id)}}>
               <DeleteFriendSvg/>
             </div>
-            : <div className={styles.button} onClick={() => {
-
-              axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
-                withCredentials: true,
-                headers: {
-                  'API-KEY': '47419082-eeaf-434c-9e6d-50aac0813eae'
-                }
-              })
-                .then(response => {
-                  if (response.data.resultCode === 0) {
-                    follow(user.id)
-                  }
-                })
-            }
-            }>
+            : <div className={styles.button} onClick={() => followUser(user.id)}>
               <AddFriendSvg/>
             </div>
 

@@ -5,7 +5,7 @@ import Page from '../../components/Page/Page'
 import FriendsSwitcher from '../../components/FriendsSwitcher/FriendsSwitcher'
 import Loader from '../../components/Loader/Loader'
 
-const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged, follow, unfollow, isFetching}) => {
+const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged, followUser, unfollowUser, isFetching}) => {
   const pagesCount = Math.ceil(totalCount / pageSize)
   const pages = []
   for (let i = 0; i < pagesCount; i++) {
@@ -28,7 +28,7 @@ const UsersPage = ({totalCount, currentPage, pageSize, usersData, onPageChanged,
              ? <Loader size={40}/>
              : <div className={styles.cards}> {
                usersData.map(user => {
-                 return <UserCard key={user.id} user={user} follow={follow} unfollow={unfollow}/>
+                 return <UserCard key={user.id} user={user} followUser={followUser} unfollowUser={unfollowUser}/>
                })
              }
              </div>

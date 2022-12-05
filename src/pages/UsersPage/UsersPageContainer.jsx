@@ -10,11 +10,12 @@ import React from 'react'
 import UsersPage from './UsersPage'
 import {usersAPI} from '../../api/api'
 
+
 class UsersPageContainer extends React.Component {
 
   componentDidMount() {
     this.props.setIsUserFetching(true)
-    usersAPI.getUsers(this.props.pageSize ,this.props.currentPage).then(users => {
+    usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(users => {
       this.props.setUsers(users.items)
       this.props.setTotalCount(users.totalCount)
       this.props.setIsUserFetching(false)
@@ -24,10 +25,28 @@ class UsersPageContainer extends React.Component {
   onPageChanged = (page) => {
     this.props.setIsUserFetching(true)
     this.props.setCurrentPage(page)
-    usersAPI.getUsers(this.props.pageSize ,this.props.currentPage).then(users => {
-        this.props.setUsers(users.items)
-        this.props.setTotalCount(users.totalCount)
-        this.props.setIsUserFetching(false)
+    usersAPI.getUsers(this.props.pageSize, page).then(users => {
+      this.props.setUsers(users.items)
+      this.props.setTotalCount(users.totalCount)
+      this.props.setIsUserFetching(false)
+    })
+  }
+
+  followUser = (userId) => {
+    usersAPI.followUser(userId)
+      .then(response => {
+      if (response.resultCode === 0) {
+        this.props.follow(userId)
+      }
+    })
+  }
+
+  unfollowUser = (userId) => {
+    usersAPI.unfollowUser(userId)
+      .then(response => {
+        if (response.resultCode === 0) {
+          this.props.unfollow(userId)
+        }
       })
   }
 
@@ -38,8 +57,8 @@ class UsersPageContainer extends React.Component {
                       pageSize={this.props.pageSize}
                       onPageChanged={this.onPageChanged}
                       usersData={this.props.usersData}
-                      unfollow={this.props.unfollow}
-                      follow={this.props.follow}
+                      unfollowUser={this.unfollowUser}
+                      followUser={this.followUser}
                       isFetching={this.props.isFetching}/>
   }
 }

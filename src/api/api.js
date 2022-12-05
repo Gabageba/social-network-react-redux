@@ -13,15 +13,28 @@ export const usersAPI = {
     return instance.get(`users?count=${pageSize}&page=${currentPage}`)
       .then(response => response.data)
   },
+
   followUser(userId) {
-    return instance.post(`follow/${userId}`, {}, )
+    return instance.post(`follow/${userId}`, {})
+      .then(response => response.data)
+  },
+
+  unfollowUser(userId) {
+    return instance.delete(`follow/${userId}`)
       .then(response => response.data)
   }
 }
 
 export const profileAPI = {
-  getProfile(userId ) {
+  getProfile(userId) {
     return  instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+      .then(response => response.data)
+  }
+}
+
+export const authAPI = {
+  auth() {
+    return instance.get(`auth/me`)
       .then(response => response.data)
   }
 }
