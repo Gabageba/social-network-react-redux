@@ -3,7 +3,7 @@ import {
   follow,
   setCurrentPage, setIsUserFetching,
   setTotalCount,
-  setUsers,
+  setUsers, toggleFollowingProgress,
   unfollow
 } from '../../redux/usersReducer'
 import React from 'react'
@@ -33,21 +33,25 @@ class UsersPageContainer extends React.Component {
   }
 
   followUser = (userId) => {
-    usersAPI.followUser(userId)
+    this.props.toggleFollowingProgress(true, userId)
+    !this.props.followingInProgress.some(id => id === userId) && usersAPI.followUser(userId)
       .then(response => {
       if (response.resultCode === 0) {
         this.props.follow(userId)
       }
     })
+      .finally(() => this.props.toggleFollowingProgress(false, userId))
   }
 
   unfollowUser = (userId) => {
-    usersAPI.unfollowUser(userId)
+    this.props.toggleFollowingProgress(true, userId)
+    !this.props.followingInProgress.some(id => id === userId) && usersAPI.unfollowUser(userId)
       .then(response => {
         if (response.resultCode === 0) {
           this.props.unfollow(userId)
         }
       })
+      .finally(() => this.props.toggleFollowingProgress(false, userId))
   }
 
 
@@ -59,7 +63,8 @@ class UsersPageContainer extends React.Component {
                       usersData={this.props.usersData}
                       unfollowUser={this.unfollowUser}
                       followUser={this.followUser}
-                      isFetching={this.props.isFetching}/>
+                      isFetching={this.props.isFetching}
+    />
   }
 }
 
@@ -70,11 +75,12 @@ const mapStateToProps = (state) => {
     pageSize: state.users.usersPageSize,
     totalCount: state.users.totalCount,
     currentPage: state.users.currentPage,
-    isFetching: state.users.isUserFetching
+    isFetching: state.users.isUserFetching,
+    followingInProgress: state.users.followingInProgress
   }
 }
 
 export default connect(mapStateToProps, {
-  follow, unfollow, setUsers, setCurrentPage, setTotalCount, setIsUserFetching
+  follow, unfollow, setUsers, setCurrentPage, setTotalCount, setIsUserFetching, toggleFollowingProgress
 })(UsersPageContainer)
 
