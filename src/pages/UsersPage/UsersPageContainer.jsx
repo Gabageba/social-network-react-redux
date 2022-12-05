@@ -7,32 +7,26 @@ import {
   unfollow
 } from '../../redux/usersReducer'
 import React from 'react'
-import axios from 'axios'
 import UsersPage from './UsersPage'
+import {usersAPI} from '../../api/api'
 
 class UsersPageContainer extends React.Component {
 
   componentDidMount() {
     this.props.setIsUserFetching(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`, {
-      withCredentials: true
+    usersAPI.getUsers(this.props.pageSize ,this.props.currentPage).then(users => {
+      this.props.setUsers(users.items)
+      this.props.setTotalCount(users.totalCount)
+      this.props.setIsUserFetching(false)
     })
-      .then(users => {
-        this.props.setUsers(users.data.items)
-        this.props.setTotalCount(users.data.totalCount)
-        this.props.setIsUserFetching(false)
-      })
   }
 
   onPageChanged = (page) => {
     this.props.setIsUserFetching(true)
     this.props.setCurrentPage(page)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`, {
-      withCredentials: true
-    })
-      .then(users => {
-        this.props.setUsers(users.data.items)
-        this.props.setTotalCount(users.data.totalCount)
+    usersAPI.getUsers(this.props.pageSize ,this.props.currentPage).then(users => {
+        this.props.setUsers(users.items)
+        this.props.setTotalCount(users.totalCount)
         this.props.setIsUserFetching(false)
       })
   }
@@ -51,7 +45,7 @@ class UsersPageContainer extends React.Component {
 }
 
 
-const mapStateToProps = (state)  => {
+const mapStateToProps = (state) => {
   return {
     usersData: state.users.usersData,
     pageSize: state.users.usersPageSize,

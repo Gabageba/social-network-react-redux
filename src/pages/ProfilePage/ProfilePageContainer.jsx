@@ -1,5 +1,5 @@
 import React from 'react'
-import  {connect} from 'react-redux'
+import {connect} from 'react-redux'
 import {
   addPost,
   setCoverColor,
@@ -8,27 +8,27 @@ import {
   updateNewPostText
 } from '../../redux/profileReducer'
 import ProfilePage from './ProfilePage'
-import axios from 'axios'
 import {withRouter} from '../../Hooks/useRouter'
 import {FastAverageColor} from 'fast-average-color'
 import defaultAvatar from '../../assets/noImageLarge.png'
+import {profileAPI} from '../../api/api'
 
 class ProfilePageContainer extends React.Component {
   componentDidMount() {
     const fac = new FastAverageColor()
     this.props.setIsProfileFetching(true)
     const userId = this.props.router.params.userId || 2
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+    profileAPI.getProfile(userId)
       .then(profile => {
-        this.props.setUserProfile(profile.data)
-        fac.getColorAsync(profile.data.photos.large ? `https://cors-anywhere.herokuapp.com/${profile.data.photos.large}` : defaultAvatar)
+        this.props.setUserProfile(profile)
+        fac.getColorAsync(profile.photos.large ? `https://cors-anywhere.herokuapp.com/${profile.photos.large}` : defaultAvatar)
           .then(color => {
             this.props.setCoverColor(color.hex)
             this.props.setIsProfileFetching(false)
           })
           .catch(e => {
-            console.log(e);
-          });
+            console.log(e)
+          })
       })
   }
 
@@ -47,7 +47,6 @@ const mapStateToProps = (state) => {
     coverColor: state.profile.coverColor
   }
 }
-
 
 
 export default connect(mapStateToProps, {
