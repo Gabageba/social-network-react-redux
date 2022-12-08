@@ -1,3 +1,7 @@
+import {FastAverageColor} from 'fast-average-color'
+import {profileAPI} from '../api/api'
+import defaultAvatar from '../assets/noImageLarge.png'
+
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
@@ -52,13 +56,36 @@ export const profileReducer = (state = initialState, action) => {
         newPostText: action.text
       }
     case SET_USER_PROFILE:
-      return { ...state, userProfile: action.userProfile }
+      return {...state, userProfile: action.userProfile}
     case SET_IS_PROFILE_FETCHING:
       return {...state, isProfileFetching: action.isFetching}
     case SET_COVER_COLOR:
-      return { ...state, coverColor: action.color }
+      return {...state, coverColor: action.color}
     default:
       return state
+  }
+}
+
+export const getProfile = (router) => {
+  return (dispatch) => {
+    const fac = new FastAverageColor()
+    dispatch(setIsProfileFetching(true))
+    const userId = router.params.userId || 2
+    profileAPI.getProfile(userId)
+      .then(profile => {
+
+        console.log(profile.photos.large)
+        dispatch(setUserProfile(profile))
+        // fac.getColorAsync(profile.photos.large ? `https://cors-anywhere.herokuapp.com/${profile.photos.large}` : defaultAvatar)
+        fac.getColorAsync(profile.photos.large ? profileAPI.getImage(profile.photos.large) : defaultAvatar)
+          .then(color => {
+            dispatch(setCoverColor(color.hex))
+            dispatch(setIsProfileFetching(false))
+          })
+          .catch(e => {
+            console.log(e)
+          })
+      })
   }
 }
 

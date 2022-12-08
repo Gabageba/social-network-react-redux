@@ -1,8 +1,9 @@
+import {usersAPI} from '../api/api'
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_FRIENDS = 'SET_FRIENDS'
-const DELETE_FRIEND = 'DELETE_FRIEND'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 const SET_IS_USER_FETCHING = 'SET_IS_USER_FETCHING'
@@ -38,7 +39,6 @@ export const usersReducer = (state = initialState, action) => {
             ? {...user, followed: true}
             : user
         )
-
       }
     case UNFOLLOW:
       return {
@@ -46,14 +46,6 @@ export const usersReducer = (state = initialState, action) => {
         usersData: state.usersData.map(user => user.id === action.userId
           ? {...user, followed: false}
           : user
-        )
-      }
-    case DELETE_FRIEND:
-      return {
-        ...state,
-        friendsData: state.friendsData.map(friend => friend.id === action.friendId
-          ? {...friend, followed: false}
-          : friend
         )
       }
     case SET_FRIENDS:
@@ -79,12 +71,52 @@ export const usersReducer = (state = initialState, action) => {
   }
 }
 
+export const getUsers = (currentPage, pageSize) => {
+  return (dispatch) => {
+    dispatch(setIsUserFetching(true))
+    dispatch(setCurrentPage(currentPage))
+    usersAPI.getUsers(pageSize, currentPage).then(users => {
+      dispatch(setUsers(users.items))
+      dispatch(setTotalCount(users.totalCount))
+      dispatch(setIsUserFetching(false))
+    })
+
+  }
+}
+
+export const followUser = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId))
+    !initialState.followingInProgress.some(id => id === userId) && usersAPI.followUser(userId)
+      .then(response => {
+        if (response.resultCode === 0) {
+          dispatch(follow(userId))
+        }
+      })
+      .finally(() => dispatch(toggleFollowingProgress(false, userId)))
+  }
+}
+
+export const unfollowUser = (userId) => {
+  return (dispatch) => {
+    dispatch(toggleFollowingProgress(true, userId))
+    !initialState.followingInProgress.some(id => id === userId) && usersAPI.unfollowUser(userId)
+      .then(response => {
+        if (response.resultCode === 0) {
+          dispatch(unfollow(userId))
+        }
+      })
+      .finally(() => dispatch(toggleFollowingProgress(false, userId)))
+  }
+}
+
+
+const setIsUserFetching = (isFetching) => ({type: SET_IS_USER_FETCHING, isFetching})
+const setUsers = (users) => ({type: SET_USERS, users})
+const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
+
 export const follow = (userId) => ({type: FOLLOW, userId})
 export const unfollow = (userId) => ({type: UNFOLLOW, userId})
-export const deleteFriend = (friendId) => ({type: DELETE_FRIEND, friendId})
-export const setUsers = (users) => ({type: SET_USERS, users})
 export const setFriends = (friends) => ({type: SET_FRIENDS, friends})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
-export const setIsUserFetching = (isFetching) => ({type: SET_IS_USER_FETCHING, isFetching})
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userId})

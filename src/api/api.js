@@ -27,10 +27,19 @@ export const usersAPI = {
 
 export const profileAPI = {
   getProfile(userId) {
-    return  instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+    return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
       .then(response => response.data)
+  },
+  getImage(img) {
+    return axios.get(`${img}`, {
+      withCredentials: true,
+      headers: {
+        'API-KEY': '47419082-eeaf-434c-9e6d-50aac0813eae'
+      }
+    })
   }
 }
+
 
 export const authAPI = {
   auth() {
