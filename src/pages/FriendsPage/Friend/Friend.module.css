@@ -3,6 +3,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid #333333;
+  justify-content: space-between;
 }
 
 .friendBlock img {
@@ -15,15 +16,17 @@
   padding-top: 5px;
 }
 
-.infoBlock h5 {
+.link {
   font-weight: 700;
   font-size: 13px;
   line-height: 15px;
   cursor: pointer;
+  color: #e1e3e6;
+  text-decoration: none;
 }
 
-.infoBlock h5:hover {
-  text-decoration: underline  ;
+.link:hover {
+  text-decoration: underline;
 }
 
 .infoBlock p {
@@ -31,10 +34,15 @@
   cursor: pointer;
   font-size: 13px;
   line-height: 15px;
-  color: #C3073F;
+  color: #c3073f;
   font-weight: 400;
 }
 
 .infoBlock p:hover {
   text-decoration: underline;
+}
+
+.more svg {
+  cursor: pointer;
+  color: #656565;
 }

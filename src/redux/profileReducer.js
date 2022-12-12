@@ -1,5 +1,5 @@
-import {FastAverageColor} from 'fast-average-color'
-import {profileAPI} from '../api/api'
+import { FastAverageColor } from 'fast-average-color'
+import { profileAPI } from '../api/api'
 import defaultAvatar from '../assets/noImageLarge.png'
 
 const ADD_POST = 'ADD-POST'
@@ -14,25 +14,25 @@ const initialState = {
       id: 3,
       name: 'Александр Пантелеев',
       avatar: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
-      message: 'Hello motherfucker'
+      message: 'Hello motherfucker',
     },
     {
       id: 2,
       name: 'No name',
       avatar: 'https://a.d-cd.net/1a424f2s-960.jpg',
-      message: 'Fuck you'
+      message: 'Fuck you',
     },
     {
       id: 1,
       name: 'Хер с горы',
       avatar: 'https://ru-static.z-dn.net/files/d38/45833edf494ba8dc483de2773abc1bf3.png',
-      message: 'Хай'
+      message: 'Хай',
     },
   ],
   newPostText: '',
   userProfile: null,
   isProfileFetching: false,
-  coverColor: '#fff'
+  coverColor: '#fff',
 }
 
 export const profileReducer = (state = initialState, action) => {
@@ -43,24 +43,24 @@ export const profileReducer = (state = initialState, action) => {
         id: lastId + 1,
         name: 'Александр Пантелеев',
         avatar: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
-        message: state.newPostText
+        message: state.newPostText,
       }
       return {
         ...state,
         postData: [newPost, ...state.postData],
-        newPostText: ''
+        newPostText: '',
       }
     case UPDATE_NEW_POST_TEXT:
       return {
         ...state,
-        newPostText: action.text
+        newPostText: action.text,
       }
     case SET_USER_PROFILE:
-      return {...state, userProfile: action.userProfile}
+      return { ...state, userProfile: action.userProfile }
     case SET_IS_PROFILE_FETCHING:
-      return {...state, isProfileFetching: action.isFetching}
+      return { ...state, isProfileFetching: action.isFetching }
     case SET_COVER_COLOR:
-      return {...state, coverColor: action.color}
+      return { ...state, coverColor: action.color }
     default:
       return state
   }
@@ -71,26 +71,28 @@ export const getProfile = (router) => {
     const fac = new FastAverageColor()
     dispatch(setIsProfileFetching(true))
     const userId = router.params.userId || 2
-    profileAPI.getProfile(userId)
-      .then(profile => {
-
-        console.log(profile.photos.large)
-        dispatch(setUserProfile(profile))
-        // fac.getColorAsync(profile.photos.large ? `https://cors-anywhere.herokuapp.com/${profile.photos.large}` : defaultAvatar)
-        fac.getColorAsync(profile.photos.large ? profileAPI.getImage(profile.photos.large) : defaultAvatar)
-          .then(color => {
-            dispatch(setCoverColor(color.hex))
-            dispatch(setIsProfileFetching(false))
-          })
-          .catch(e => {
-            console.log(e)
-          })
-      })
+    profileAPI.getProfile(userId).then((profile) => {
+      dispatch(setUserProfile(profile))
+      fac
+        .getColorAsync(
+          profile.photos.large
+            ? `https://cors-anywhere.herokuapp.com/${profile.photos.large}`
+            : defaultAvatar,
+        )
+        // fac.getColorAsync(profile.photos.large ? profileAPI.getImage(profile.photos.large) : defaultAvatar)
+        .then((color) => {
+          dispatch(setCoverColor(color.hex))
+          dispatch(setIsProfileFetching(false))
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    })
   }
 }
 
-export const addPost = () => ({type: ADD_POST})
-export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text})
-export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
-export const setIsProfileFetching = (isFetching) => ({type: SET_IS_PROFILE_FETCHING, isFetching})
-export const setCoverColor = (color) => ({type: SET_COVER_COLOR, color})
+export const addPost = () => ({ type: ADD_POST })
+export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, text })
+export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile })
+export const setIsProfileFetching = (isFetching) => ({ type: SET_IS_PROFILE_FETCHING, isFetching })
+export const setCoverColor = (color) => ({ type: SET_COVER_COLOR, color })

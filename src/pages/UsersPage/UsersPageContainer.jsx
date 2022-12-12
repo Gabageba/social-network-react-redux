@@ -1,14 +1,9 @@
-import {connect} from 'react-redux'
-import {
-  followUser, getUsers,
-  setCurrentPage, unfollowUser
-} from '../../redux/usersReducer'
+import { connect } from 'react-redux'
+import { followUser, getUsers, setCurrentPage, unfollowUser } from '../../redux/usersReducer'
 import React from 'react'
 import UsersPage from './UsersPage'
 
-
 class UsersPageContainer extends React.Component {
-
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
   }
@@ -18,18 +13,20 @@ class UsersPageContainer extends React.Component {
   }
 
   render() {
-    return <UsersPage currentPage={this.props.currentPage}
-                      totalCount={this.props.totalCount}
-                      pageSize={this.props.pageSize}
-                      onPageChanged={this.onPageChanged}
-                      usersData={this.props.usersData}
-                      unfollowUser={this.props.unfollowUser}
-                      followUser={this.props.followUser}
-                      isFetching={this.props.isFetching}
-    />
+    return (
+      <UsersPage
+        currentPage={this.props.currentPage}
+        totalCount={this.props.totalCount}
+        pageSize={this.props.pageSize}
+        onPageChanged={this.onPageChanged}
+        usersData={this.props.usersData}
+        unfollowUser={this.props.unfollowUser}
+        followUser={this.props.followUser}
+        isFetching={this.props.isFetching}
+      />
+    )
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -37,11 +34,13 @@ const mapStateToProps = (state) => {
     pageSize: state.users.usersPageSize,
     totalCount: state.users.totalCount,
     currentPage: state.users.currentPage,
-    isFetching: state.users.isUserFetching
+    isFetching: state.users.isUserFetching,
   }
 }
 
 export default connect(mapStateToProps, {
-  setCurrentPage, getUsers, followUser, unfollowUser
+  setCurrentPage,
+  getUsers,
+  followUser,
+  unfollowUser,
 })(UsersPageContainer)
-
