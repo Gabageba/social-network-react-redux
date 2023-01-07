@@ -6,6 +6,7 @@ import {
 } from '../../redux/profileReducer'
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 
 class ProfilePageContainer extends React.Component {
   componentDidMount() {
@@ -21,8 +22,9 @@ class ProfilePageContainer extends React.Component {
   render() {
     return <ProfilePage {...this.props}/>
   }
-
 }
+
+const AuthRedirectComponent = withAuthRedirect(ProfilePageContainer)
 
 const mapStateToProps = (state) => {
   return {
@@ -30,12 +32,10 @@ const mapStateToProps = (state) => {
     postData: state.profile.postData,
     userProfile: state.profile.userProfile,
     isFetching: state.profile.isProfileFetching,
-    coverColor: state.profile.coverColor,
-    isAuth: state.auth.isAuth
+    coverColor: state.profile.coverColor
   }
 }
 
-
 export default connect(mapStateToProps, {
   addPost, updateNewPostText, getProfile
-})(withRouter(ProfilePageContainer))
+})(withRouter(AuthRedirectComponent))

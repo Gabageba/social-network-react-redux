@@ -4,12 +4,10 @@ import MyPosts from './MyPosts/MyPosts'
 import AvatarBlock from './AvatarBlock/AvatarBlock'
 import NewPost from './NewPost/NewPost'
 import Loader from '../../components/Loader/Loader'
-import {Navigate} from 'react-router-dom'
-import {LOGIN_ROUTE} from '../../utils/const'
 
-const ProfilePage = ({postData, updateNewPostText, addPost, newPostText, userProfile, isFetching, coverColor, isAuth}) => {
+const ProfilePage = ({postData, updateNewPostText, addPost, newPostText, userProfile, isFetching, coverColor}) => {
 
-  if (!isAuth) return <Navigate to={LOGIN_ROUTE}/>
+
 
   return (
     <div className={styles.profile}>
