@@ -12,6 +12,12 @@ class ProfilePageContainer extends React.Component {
     this.props.getProfile(this.props.router)
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.router.params.userId !== this.props.router.params.userId) {
+      this.props.getProfile(this.props.router)
+    }
+  }
+
   render() {
     return <ProfilePage {...this.props}/>
   }
