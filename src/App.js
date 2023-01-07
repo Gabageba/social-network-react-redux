@@ -7,7 +7,7 @@ import {
   NEWS_ROUTE,
   PROFILE_ROUTE,
   SETTINGS_ROUTE,
-  FRIENDS_ROUTE,
+  FRIENDS_ROUTE, LOGIN_ROUTE,
 } from './utils/const'
 import News from './pages/News/News'
 import Music from './pages/Music/Music'
@@ -18,6 +18,7 @@ import UsersPageContainer from './pages/UsersPage/UsersPageContainer'
 import FriendsPageContainer from './pages/FriendsPage/FriendsPageContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import NavbarContainer from './components/Navbar/NavbarContainer'
+import Login from './pages/Login/Login'
 
 const App = ({ state }) => {
   window.state = state
@@ -44,6 +45,7 @@ const App = ({ state }) => {
                 <Route element={<News />} path={NEWS_ROUTE} />
                 <Route element={<Music />} path={MUSIC_ROUTE} />
                 <Route element={<Settings />} path={SETTINGS_ROUTE} />
+                <Route element={<Login />} path={LOGIN_ROUTE} />
               </Routes>
             </div>
           </div>

@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
     postData: state.profile.postData,
     userProfile: state.profile.userProfile,
     isFetching: state.profile.isProfileFetching,
-    coverColor: state.profile.coverColor
+    coverColor: state.profile.coverColor,
+    isAuth: state.auth.isAuth
   }
 }
 
