@@ -7,6 +7,7 @@ import {
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 class ProfilePageContainer extends React.Component {
   componentDidMount() {
@@ -24,8 +25,6 @@ class ProfilePageContainer extends React.Component {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(ProfilePageContainer)
-
 const mapStateToProps = (state) => {
   return {
     newPostText: state.profile.newPostText,
@@ -36,6 +35,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  addPost, updateNewPostText, getProfile
-})(withRouter(AuthRedirectComponent))
+export default compose(
+  connect(mapStateToProps, {
+    addPost, updateNewPostText, getProfile
+  }),
+  withRouter,
+  withAuthRedirect,
+)(ProfilePageContainer)
+

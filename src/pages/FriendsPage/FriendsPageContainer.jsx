@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import FriendsPage from './FriendsPage'
 import { setCurrentPage, getFriends, unfollowUser } from '../../redux/usersReducer'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 class FriendsPageContainer extends React.Component {
   componentDidMount() {
@@ -29,9 +30,6 @@ class FriendsPageContainer extends React.Component {
   }
 }
 
-const AuthRedirectComponent = withAuthRedirect(FriendsPageContainer)
-
-
 const mapStateToProps = (state) => {
   return {
     friendsData: state.users.friendsData,
@@ -42,8 +40,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  setCurrentPage,
-  getFriends,
-  unfollowUser,
-})(AuthRedirectComponent)
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    getFriends,
+    unfollowUser,
+  }),
+  withAuthRedirect
+)(FriendsPageContainer)
+

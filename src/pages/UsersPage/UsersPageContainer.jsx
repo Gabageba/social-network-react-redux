@@ -3,6 +3,7 @@ import { followUser, getUsers, setCurrentPage, unfollowUser } from '../../redux/
 import React from 'react'
 import UsersPage from './UsersPage'
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
+import {compose} from 'redux'
 
 class UsersPageContainer extends React.Component {
   componentDidMount() {
@@ -39,9 +40,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default withAuthRedirect(connect(mapStateToProps, {
-  setCurrentPage,
-  getUsers,
-  followUser,
-  unfollowUser,
-})(UsersPageContainer))
+export default compose(
+  connect(mapStateToProps, {
+    setCurrentPage,
+    getUsers,
+    followUser,
+    unfollowUser,
+  }),
+  withAuthRedirect
+)(UsersPageContainer)
