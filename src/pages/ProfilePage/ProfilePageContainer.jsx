@@ -6,7 +6,6 @@ import {
 } from '../../redux/profileReducer'
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
-import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 
 class ProfilePageContainer extends React.Component {
@@ -40,6 +39,6 @@ export default compose(
     addPost, updateNewPostText, getProfile
   }),
   withRouter,
-  withAuthRedirect,
+  // withAuthRedirect,
 )(ProfilePageContainer)
 

@@ -3,6 +3,7 @@ import styles from './AvatarBlock.module.css'
 import place from '../../../../../social-network-react-redux/src/assets/place.png'
 import info from '../../../../../social-network-react-redux/src/assets/info.png'
 import defaultAvatar from '../../../assets/noImageLarge.png'
+import ProfileStatus from './ProfileStatus'
 
 const AvatarBlock = ({userProfile, coverColor}) => {
   return (
@@ -13,7 +14,7 @@ const AvatarBlock = ({userProfile, coverColor}) => {
           <img  className={styles.avatar} src={userProfile.photos.large || defaultAvatar} alt=""/>
           <div style={{marginLeft: '16px'}}>
             <h1 className={styles.name}>{userProfile.fullName}</h1>
-            <p className={styles.status}>{userProfile.aboutMe}</p>
+            <ProfileStatus status={'userProfile.aboutMe'}/>
             <div className={styles.additionalInfoButton}>
               <div className={styles.additionalInfo}>
                 <img width={20} height={20} src={place} alt="Place"/>
