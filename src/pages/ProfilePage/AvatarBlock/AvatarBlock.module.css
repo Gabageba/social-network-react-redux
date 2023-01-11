@@ -43,6 +43,34 @@
   color: #939393;
 }
 
+.editStatus {
+  height: 60px;
+  color:#e1e3e6;
+  width: 100%;
+  resize: none;
+}
+
+.editStatusBlock {
+  background-color: #292929;
+  padding: 10px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.saveButton {
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #222222;
+  background: #E1E3E6;
+}
+
+.saveButton:hover {
+  background: #CACBCE;
+}
+
 .additionalInfoButton {
   display: flex;
   margin-top: 6px;

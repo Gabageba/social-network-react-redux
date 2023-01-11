@@ -8,11 +8,11 @@ import ProfileStatus from './ProfileStatus'
 const AvatarBlock = ({userProfile, coverColor}) => {
   return (
     <div className={styles.avatarBlock}>
-      <div className={styles.cover} style={ {background: coverColor} }></div>
+      <div className={styles.cover} style={{background: coverColor}}></div>
       <div className={`contentBlock ${styles.infoBlock}`}>
         <div className={styles.mainInfo}>
-          <img  className={styles.avatar} src={userProfile.photos.large || defaultAvatar} alt=""/>
-          <div style={{marginLeft: '16px'}}>
+          <img className={styles.avatar} src={userProfile.photos.large || defaultAvatar} alt=""/>
+          <div style={{marginLeft: '16px', width: '300px'}}>
             <h1 className={styles.name}>{userProfile.fullName}</h1>
             <ProfileStatus status={'userProfile.aboutMe'}/>
             <div className={styles.additionalInfoButton}>

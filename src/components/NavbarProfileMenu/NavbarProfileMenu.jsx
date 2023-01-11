@@ -11,7 +11,6 @@ import {PROFILE_ROUTE} from '../../utils/const'
 
 const NavbarProfileMenu = ({photo, fullName, email, userId, navbarProfileMenuVisible}) => {
   return (
-    <div className={styles.closeBlock}>
       <div className={`${styles.navBarProfileMenu} ${navbarProfileMenuVisible ? '' : styles.profileMenuDisable}`}>
         <div className={styles.profileLink}>
           <NavLink className={`contentBlock ${styles.profileInfoBlock}`} to={PROFILE_ROUTE + '/' + userId}>
@@ -27,7 +26,6 @@ const NavbarProfileMenu = ({photo, fullName, email, userId, navbarProfileMenuVis
         <NavbarProfileMenuLink text={'Помощь'} icon={<HelpSvg/>}/>
         <NavbarProfileMenuLink text={'Выйти'} icon={<ExitSvg/>}/>
       </div>
-    </div>
   )
 }
 

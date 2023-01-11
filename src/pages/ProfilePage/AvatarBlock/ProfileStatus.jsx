@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './AvatarBlock.module.css'
+import ClickAwayListener from 'react-click-away-listener'
 
 class ProfileStatus extends React.Component {
   state = {
@@ -15,12 +16,17 @@ class ProfileStatus extends React.Component {
   render() {
     return (
       <div>
-
         {
           this.state.editMode
-            ? <div>
-              <input autoFocus={true} onBlur={this.activateEditMode} className={styles.status} type="text" value={this.props.status}/>
-            </div>
+            ? <ClickAwayListener onClickAway={this.activateEditMode}>
+              <div className={styles.editStatusBlock} >
+              <textarea autoFocus={true} placeholder={'Введите статус'}
+                        className={`${styles.status} ${styles.editStatus}`} value={this.props.status}/>
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <button className={styles.saveButton}>Сохранить</button>
+                </div>
+              </div>
+            </ClickAwayListener>
             : <div>
               <p onClick={this.activateEditMode} className={styles.status}>{this.props.status}</p>
             </div>
