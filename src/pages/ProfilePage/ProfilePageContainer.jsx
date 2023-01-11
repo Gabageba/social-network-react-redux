@@ -9,6 +9,16 @@ import {withRouter} from '../../Hooks/useRouter'
 import {compose} from 'redux'
 
 class ProfilePageContainer extends React.Component {
+  state = {
+    postWriting: false
+  }
+
+  setPostWriting = () => {
+    this.setState({
+      postWriting: !this.state.postWriting
+    })
+  }
+
   componentDidMount() {
     this.props.getProfile(this.props.router)
   }
@@ -20,7 +30,7 @@ class ProfilePageContainer extends React.Component {
   }
 
   render() {
-    return <ProfilePage {...this.props}/>
+    return <ProfilePage {...this.props} postWriting={this.state.postWriting} setPostWriting={this.setPostWriting}/>
   }
 }
 

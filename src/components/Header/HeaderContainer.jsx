@@ -2,10 +2,19 @@ import React from 'react'
 import Header from './Header'
 import {connect} from 'react-redux'
 import {setAuthUserData, setAuthUserInfo} from '../../redux/authReducer'
-import {setNavbarProfileMenuVisible} from '../../redux/modalsReducer'
 import {authAPI, profileAPI} from '../../api/api'
 
 class HeaderContainer extends React.Component {
+
+  state = {
+    navbarProfileMenuVisible: false
+  }
+  setNavbarProfileMenuVisible = (bool) => {
+    this.setState({
+      navbarProfileMenuVisible: bool
+    })
+  }
+
   componentDidMount() {
     authAPI.auth()
       .then(response => {
@@ -23,7 +32,7 @@ class HeaderContainer extends React.Component {
   }
 
   render() {
-    return <Header {...this.props} />
+    return <Header {...this.props} navbarProfileMenuVisible={this.state.navbarProfileMenuVisible} setNavbarProfileMenuVisible={this.setNavbarProfileMenuVisible}/>
   }
 }
 
@@ -32,12 +41,10 @@ const mapStateToProps = (state) => ({
   fullName: state.auth.fullName,
   photo: state.auth.photo,
   email: state.auth.email,
-  navbarProfileMenuVisible: state.modals.navbarProfileMenuVisible,
   userId: state.auth.userId
 })
 
 export default connect(mapStateToProps, {
   setAuthUserData,
-  setAuthUserInfo,
-  setNavbarProfileMenuVisible
+  setAuthUserInfo
 })(HeaderContainer)

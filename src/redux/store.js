@@ -3,7 +3,6 @@ import {profileReducer} from './profileReducer'
 import {dialogsReducer} from './dialogsReducer'
 import {usersReducer} from './usersReducer'
 import {authReducer} from './authReducer'
-import {modalsReducer} from './modalsReducer'
 import thunkMiddleware from 'redux-thunk'
 
 const reducers = combineReducers({
@@ -11,8 +10,7 @@ const reducers = combineReducers({
   profile: profileReducer,
   dialogs: dialogsReducer,
   users: usersReducer,
-  auth: authReducer,
-  modals: modalsReducer
+  auth: authReducer
 })
 
 export const store = createStore(

@@ -2,21 +2,24 @@
   margin-bottom: 20px;
 }
 
-.input {
-  resize: none;
+.newPostText {
   font-size: 13px;
   font-weight: 400;
   line-height: 19px;
   color: #e1e3e6;
   font-style: normal;
   width: 100%;
-  height: 60px;
   box-sizing: border-box;
   background-color: transparent;
   border: none;
   outline: none;
   margin-top: 7px;
   margin-left: 12px;
+}
+
+.input {
+  resize: none;
+  height: 60px;
 }
 
 .avatar {
