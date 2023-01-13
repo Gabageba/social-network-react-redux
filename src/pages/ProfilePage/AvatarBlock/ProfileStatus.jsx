@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './AvatarBlock.module.css'
 import ClickAwayListener from 'react-click-away-listener'
+import CompleteSvg from '../../../components/svgFiles/completeSvg'
 
 class ProfileStatus extends React.Component {
   state = {
@@ -19,15 +20,14 @@ class ProfileStatus extends React.Component {
         {
           this.state.editMode
             ? <ClickAwayListener onClickAway={this.activateEditMode}>
-              <div className={styles.editStatusBlock} >
-              <textarea autoFocus={true} placeholder={'Введите статус'}
-                        className={`${styles.status} ${styles.editStatus}`} value={this.props.status}/>
-                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                  <button className={styles.saveButton}>Сохранить</button>
-                </div>
+              <div className={styles.editStatusBlock}>
+                <input autoFocus={true} placeholder={'Введите статус'}
+                       className={`${styles.status} ${styles.editStatus}`} value={this.props.status}/>
+
+                <CompleteSvg/>
               </div>
             </ClickAwayListener>
-            : <div>
+            : <div style={{cursor: 'pointer'}}>
               <p onClick={this.activateEditMode} className={styles.status}>{this.props.status}</p>
             </div>
         }

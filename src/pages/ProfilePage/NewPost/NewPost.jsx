@@ -24,7 +24,6 @@ const NewPost = ({updateNewPostText, addPost, newPostText, postWriting, setPostW
                 setPostWriting()
               }}>Опубликовать</button>
             </div>
-
           </div>
 
           :
