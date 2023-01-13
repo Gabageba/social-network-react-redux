@@ -5,12 +5,27 @@ import CompleteSvg from '../../../components/svgFiles/completeSvg'
 
 class ProfileStatus extends React.Component {
   state = {
-    editMode: false
+    editMode: false,
+    status: this.props.status
   }
 
-  activateEditMode = () => {
+  activateEditMode = (bool) => {
     this.setState({
-      editMode: !this.state.editMode
+      editMode: bool,
+      status: this.props.status
+    })
+  }
+
+  saveStatus = () => {
+    this.setState({
+      editMode: false
+    })
+    this.props.updateStatus(this.state.status)
+  }
+
+  onStatusChange = (e) => {
+    this.setState({
+      status: e.target.value
     })
   }
 
@@ -19,16 +34,22 @@ class ProfileStatus extends React.Component {
       <div>
         {
           this.state.editMode
-            ? <ClickAwayListener onClickAway={this.activateEditMode}>
+            ? <ClickAwayListener onClickAway={() => this.activateEditMode(false)}>
               <div className={styles.editStatusBlock}>
-                <input autoFocus={true} placeholder={'Введите статус'}
-                       className={`${styles.status} ${styles.editStatus}`} value={this.props.status}/>
-
-                <CompleteSvg/>
+                <input onChange={this.onStatusChange}
+                       autoFocus={true}
+                       placeholder={'Введите статус'}
+                       className={`${styles.status} ${styles.editStatus}`}
+                       value={this.state.status}
+                />
+                <span onClick={this.saveStatus} style={{display: 'flex'}}>
+                  <CompleteSvg />
+                </span>
               </div>
             </ClickAwayListener>
             : <div style={{cursor: 'pointer'}}>
-              <p onClick={this.activateEditMode} className={styles.status}>{this.props.status}</p>
+              <p onClick={() => this.activateEditMode(true)}
+                 className={styles.status}>{this.props.status || 'Добавить статус'}</p>
             </div>
         }
       </div>

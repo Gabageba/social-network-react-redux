@@ -21,13 +21,13 @@ const NewPost = ({updateNewPostText, addPost, newPostText, postWriting, setPostW
             <div style={{textAlign: 'right'}}>
               <button className={styles.postButton} onClick={() => {
                 addPost()
-                setPostWriting()
+                setPostWriting(false)
               }}>Опубликовать</button>
             </div>
           </div>
 
           :
-          <div style={{display: 'flex'}} onClick={setPostWriting}>
+          <div style={{display: 'flex'}} onClick={() => setPostWriting(true)}>
             <img className={styles.avatar} src="https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg"
                  alt="Avatar"/>
             <p className={styles.newPostText}>Что нового чел?</p>

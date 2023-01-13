@@ -1,5 +1,5 @@
-import { FastAverageColor } from 'fast-average-color'
-import { profileAPI } from '../api/api'
+import {FastAverageColor} from 'fast-average-color'
+import {profileAPI} from '../api/api'
 import defaultAvatar from '../assets/noImageLarge.png'
 
 const ADD_POST = 'ADD-POST'
@@ -7,6 +7,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_IS_PROFILE_FETCHING = 'SET_IS_PROFILE_FETCHING'
 const SET_COVER_COLOR = 'SET_COVER_COLOR'
+const SET_STATUS = 'SET_STATUS'
 
 const initialState = {
   postData: [
@@ -33,6 +34,7 @@ const initialState = {
   userProfile: null,
   isProfileFetching: false,
   coverColor: '#fff',
+  status: ''
 }
 
 export const profileReducer = (state = initialState, action) => {
@@ -56,21 +58,22 @@ export const profileReducer = (state = initialState, action) => {
         newPostText: action.text,
       }
     case SET_USER_PROFILE:
-      return { ...state, userProfile: action.userProfile }
+      return {...state, userProfile: action.userProfile}
     case SET_IS_PROFILE_FETCHING:
-      return { ...state, isProfileFetching: action.isFetching }
+      return {...state, isProfileFetching: action.isFetching}
     case SET_COVER_COLOR:
-      return { ...state, coverColor: action.color }
+      return {...state, coverColor: action.color}
+    case SET_STATUS:
+      return {...state, status: action.status}
     default:
       return state
   }
 }
 
-export const getProfile = (router) => {
+export const getProfile = (userId = 2) => {
   return (dispatch) => {
     const fac = new FastAverageColor()
     dispatch(setIsProfileFetching(true))
-    const userId = router.params.userId || 2
     profileAPI.getProfile(userId).then((profile) => {
       dispatch(setUserProfile(profile))
       fac
@@ -91,8 +94,29 @@ export const getProfile = (router) => {
   }
 }
 
-export const addPost = () => ({ type: ADD_POST })
-export const updateNewPostText = (text) => ({ type: UPDATE_NEW_POST_TEXT, text })
-export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile })
-export const setIsProfileFetching = (isFetching) => ({ type: SET_IS_PROFILE_FETCHING, isFetching })
-export const setCoverColor = (color) => ({ type: SET_COVER_COLOR, color })
+export const getStatus = (userId) => {
+  return (dispatch) => {
+    profileAPI.getStatus(userId)
+      .then(response => {
+        dispatch(setStatus(response.data))
+      })
+  }
+}
+
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(status)
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          dispatch(setStatus(status))
+        }
+      })
+  }
+}
+
+export const addPost = () => ({type: ADD_POST})
+export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text})
+export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
+export const setIsProfileFetching = (isFetching) => ({type: SET_IS_PROFILE_FETCHING, isFetching})
+export const setCoverColor = (color) => ({type: SET_COVER_COLOR, color})
+export const setStatus = (status) => ({type: SET_STATUS, status})

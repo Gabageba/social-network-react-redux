@@ -5,7 +5,7 @@ import info from '../../../../../social-network-react-redux/src/assets/info.png'
 import defaultAvatar from '../../../assets/noImageLarge.png'
 import ProfileStatus from './ProfileStatus'
 
-const AvatarBlock = ({userProfile, coverColor}) => {
+const AvatarBlock = ({userProfile, coverColor, status, updateStatus}) => {
   return (
     <div className={styles.avatarBlock}>
       <div className={styles.cover} style={{background: coverColor}}></div>
@@ -14,7 +14,7 @@ const AvatarBlock = ({userProfile, coverColor}) => {
           <img className={styles.avatar} src={userProfile.photos.large || defaultAvatar} alt=""/>
           <div style={{marginLeft: '16px', width: '300px'}}>
             <h1 className={styles.name}>{userProfile.fullName}</h1>
-            <ProfileStatus status={'userProfile.aboutMe'}/>
+            <ProfileStatus status={status} updateStatus={updateStatus}/>
             <div className={styles.additionalInfoButton}>
               <div className={styles.additionalInfo}>
                 <img width={20} height={20} src={place} alt="Place"/>

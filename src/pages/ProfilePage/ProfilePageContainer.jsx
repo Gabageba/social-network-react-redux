@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {
-  addPost, getProfile,
-  updateNewPostText
+  addPost, getProfile, getStatus,
+  updateNewPostText, updateStatus
 } from '../../redux/profileReducer'
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
@@ -13,24 +13,27 @@ class ProfilePageContainer extends React.Component {
     postWriting: false
   }
 
-  setPostWriting = () => {
+  userId = this.props.router.params.userId
+
+  setPostWriting = (bool) => {
     this.setState({
-      postWriting: !this.state.postWriting
+      postWriting: bool
     })
   }
 
   componentDidMount() {
-    this.props.getProfile(this.props.router)
+    this.props.getProfile(this.userId)
+    this.props.getStatus(this.userId)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.router.params.userId !== this.props.router.params.userId) {
+    if (prevProps.router.params.userId !== this.userId) {
       this.props.getProfile(this.props.router)
     }
   }
 
   render() {
-    return <ProfilePage {...this.props} postWriting={this.state.postWriting} setPostWriting={this.setPostWriting}/>
+    return <ProfilePage {...this.props} updateStatus={this.props.updateStatus} postWriting={this.state.postWriting} setPostWriting={this.setPostWriting}/>
   }
 }
 
@@ -40,13 +43,14 @@ const mapStateToProps = (state) => {
     postData: state.profile.postData,
     userProfile: state.profile.userProfile,
     isFetching: state.profile.isProfileFetching,
-    coverColor: state.profile.coverColor
+    coverColor: state.profile.coverColor,
+    status: state.profile.status
   }
 }
 
 export default compose(
   connect(mapStateToProps, {
-    addPost, updateNewPostText, getProfile
+    addPost, updateNewPostText, getProfile, getStatus, updateStatus
   }),
   withRouter,
   // withAuthRedirect,

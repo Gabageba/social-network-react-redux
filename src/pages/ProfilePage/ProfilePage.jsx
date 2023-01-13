@@ -5,7 +5,7 @@ import AvatarBlock from './AvatarBlock/AvatarBlock'
 import NewPost from './NewPost/NewPost'
 import Loader from '../../components/Loader/Loader'
 
-const ProfilePage = ({postData, updateNewPostText, addPost, newPostText, userProfile, isFetching, coverColor, postWriting, setPostWriting}) => {
+const ProfilePage = ({postData, updateNewPostText, addPost, newPostText, userProfile, isFetching, coverColor, postWriting, setPostWriting, updateStatus, status}) => {
 
 
 
@@ -15,9 +15,18 @@ const ProfilePage = ({postData, updateNewPostText, addPost, newPostText, userPro
         isFetching || !userProfile
           ? <Loader size={100} border={10}/>
           : <div>
-            <AvatarBlock userProfile={userProfile} coverColor={coverColor}/>
+            <AvatarBlock userProfile={userProfile}
+                         coverColor={coverColor}
+                         updateStatus={updateStatus}
+                         status={status}
+            />
             <div className={styles.rightBlock}>
-              <NewPost newPostText={newPostText} addPost={addPost} updateNewPostText={updateNewPostText} postWriting={postWriting} setPostWriting={setPostWriting}/>
+              <NewPost newPostText={newPostText}
+                       addPost={addPost}
+                       updateNewPostText={updateNewPostText}
+                       postWriting={postWriting}
+                       setPostWriting={setPostWriting}
+              />
               <MyPosts postData={postData}/>
             </div>
           </div>

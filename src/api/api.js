@@ -22,7 +22,7 @@ export const usersAPI = {
   },
 
   followUser(userId) {
-    return instance.post(`follow/${userId}`, {}).then((response) => response.data)
+    return instance.post(`follow/${userId}`).then((response) => response.data)
   },
 
   unfollowUser(userId) {
@@ -35,6 +35,14 @@ export const profileAPI = {
     return instance
       .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
       .then((response) => response.data)
+  },
+
+  getStatus(userId) {
+    return instance.get(`profile/status/${userId}`)
+  },
+
+  updateStatus(status) {
+    return instance.put('profile/status', {status})
   }
 }
 
