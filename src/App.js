@@ -22,7 +22,6 @@ import LoginPageContainer from './pages/LoginPage/LoginPageContainer'
 
 const App = ({ state }) => {
   window.state = state
-
   return (
     <BrowserRouter>
       <div>
