@@ -9,7 +9,8 @@ class NavbarContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  userId: state.auth.userId
+  userId: state.auth.userId,
+  isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps)(NavbarContainer)

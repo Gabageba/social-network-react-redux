@@ -1,0 +1,137 @@
+.loginPage {
+  width: 320px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginPage svg {
+  width: 48px;
+  height: 48px;
+}
+
+.loginHeader {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.loginForm {
+  width: 100%;
+}
+
+.loginForm input[type='text'] {
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  padding: 8px 12px;
+  line-height: 20px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background-color: #333333;
+  margin-bottom: 12px;
+}
+
+.loginCheckbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkboxBlock {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxBlock label {
+  font-size: 13px;
+  line-height: 19px;
+  color: #828282;
+}
+
+.loginCheckbox + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.loginCheckbox + label::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid #828282;
+  border-radius: 4px;
+  margin-right: 6px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70% 70%;
+}
+
+.loginCheckbox:checked + label::before {
+  border-color: #fff;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.8 7.11'%3E%3Cpath fill='%222222' d='M9.54,1.54c.35-.35,.35-.92,0-1.27s-.92-.35-1.27,0L3.6,4.94,1.54,2.89c-.35-.35-.92-.36-1.27,0-.35,.35-.36,.92,0,1.28l2.7,2.69c.35,.35,.92,.35,1.27,0L9.53,1.55h0Z'/%3E%3C/svg%3E")
+}
+
+.questions {
+  margin-left: 4px;
+}
+
+.questions svg {
+  color: #656565;
+  width: 12px;
+  height: 12px;
+}
+
+.questions:hover svg {
+  color: #828282
+}
+
+.loginButton {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 16px ;
+}
+
+.loginButton:hover {
+  background-color: #e4e4e4;
+}
+
+.registrationButton {
+  width: 100%;
+  background-color: #4BB34B;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 16px ;
+}
+
+.registrationButton:hover {
+  background-color: #46A146;
+}
+
+.afterRegistration {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  color: #656565;
+  margin-top: 12px;
+}
+
+.loginBlock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}

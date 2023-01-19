@@ -7,6 +7,7 @@ import {
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
 import {compose} from 'redux'
+import {withAuthRedirect} from '../../hoc/withAuthRedirect'
 
 class ProfilePageContainer extends React.Component {
   state = {
@@ -53,6 +54,6 @@ export default compose(
     addPost, updateNewPostText, getProfile, getStatus, updateStatus
   }),
   withRouter,
-  // withAuthRedirect,
+  withAuthRedirect,
 )(ProfilePageContainer)
 
