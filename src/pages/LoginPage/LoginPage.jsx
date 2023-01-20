@@ -5,15 +5,16 @@ import {LoginReduxForm} from './LoginReduxForm/LoginReduxForm'
 
 
 
-const LoginPage = () => {
+const LoginPage = ({logIn}) => {
   const onSubmit = (formData) => {
     console.log(formData)
+    logIn(formData.login, formData.password, formData.rememberMe)
   }
   return (
     <div className={styles.loginBlock}>
       <div className={`contentBlock ${styles.loginPage}`} style={{marginBottom: '16px'}}>
         <VkLogoSvg bgFill={'#fff'}/>
-        <h1 class={styles.loginHeader}>Вход ВКонтакте</h1>
+        <h1 className={styles.loginHeader}>Вход ВКонтакте</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
       </div>
       <div className={`contentBlock ${styles.loginPage}`}>

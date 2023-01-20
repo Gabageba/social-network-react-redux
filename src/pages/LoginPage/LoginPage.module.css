@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.loginForm input[type='text'] {
+.loginForm input[type='text'], .loginForm input[type='password'] {
   box-sizing: border-box;
   width: 100%;
   height: 36px;

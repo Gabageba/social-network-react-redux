@@ -9,14 +9,14 @@
   height: 12px;
 }
 
-.questions:hover svg {
+.questions svg:hover {
   color: #828282
 }
 
 .questions:hover .answerBlock {
+  visibility: visible;
   opacity: 1;
   transform:  translateX(-47.5%);
-  /*display: block;*/
 }
 
 .answerBlock {
@@ -27,10 +27,9 @@
   margin-top: 8px;
   transform: translateX(-47.5%) translateY(10px);
   background-color: #292929;
+  visibility: hidden;
   opacity: 0;
-  /*display: none;*/
-  transition: 0.25s ease-in-out;
-  /*border: none;*/
+  transition: 0.2s ease-in-out;
 }
 
 .answerBlock h5 {
@@ -48,6 +47,7 @@
   border: 10px solid transparent;
   border-bottom: 10px solid  #333333;
 }
+
 .answerBlock::after {
   border-bottom: 10px solid  #292929;
   top: -19px;

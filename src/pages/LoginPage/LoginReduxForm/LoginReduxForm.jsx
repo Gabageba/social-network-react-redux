@@ -10,7 +10,7 @@ const LoginForm = ({handleSubmit}) => {
         <Field placeholder={'Логин'} name={'login'} component={'input'} type={'text'} />
       </div>
       <div>
-        <Field placeholder={'Пароль'} name={'password'} component={'input'} type={'text'} />
+        <Field placeholder={'Пароль'} name={'password'} component={'input'} type={'password'} />
       </div>
       <div className={styles.checkboxBlock}>
         <Field className={styles.loginCheckbox} id='rememberMe' type="checkbox" name={'rememberMe'} component={'input'} />

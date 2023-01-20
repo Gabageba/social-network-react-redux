@@ -1,3 +1,5 @@
+import {authAPI} from '../api/api'
+
 const SET_USER_DATA = 'SET_USER_DATA'
 const SET_USER_INFO = 'SET_USER_INFO'
 
@@ -26,6 +28,15 @@ export const authReducer = (state = initialState, action) => {
     }
     default:
       return state
+  }
+}
+
+export const logIn = (email, password, rememberMe, captcha) => {
+  console.log(email, password)
+  return (dispatch) => {
+    authAPI.logIn(email, password, rememberMe, captcha).then(response => {
+      console.log(response)
+    })
   }
 }
 
