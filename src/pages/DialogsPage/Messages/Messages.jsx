@@ -5,6 +5,7 @@ import {NewMessageReduxForm} from './NewMessage/NewMessage'
 
 const Messages = ({messagesData, sendMessage}) => {
   let prev = ''
+  const onSendMessage = (formData) => sendMessage(formData.newMessageText)
 
   return (
     <div className={styles.messages}>
@@ -22,7 +23,7 @@ const Messages = ({messagesData, sendMessage}) => {
           }
         })
       }
-      <NewMessageReduxForm onSubmit={sendMessage}/>
+      <NewMessageReduxForm onSubmit={onSendMessage}/>
     </div>
   )
 }

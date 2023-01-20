@@ -64,7 +64,7 @@ export const dialogsReducer = (state = initialState, action) => {
         userId: 2,
         userImg: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
         userName: 'Александр Пантелеев',
-        message: action.formData.newMessageText
+        message: action.newMessageText
       }
       return {
         ...state,
@@ -75,6 +75,6 @@ export const dialogsReducer = (state = initialState, action) => {
   }
 }
 
-export const sendMessage = (formData) => ({type: SEND_MESSAGE, formData})
+export const sendMessage = (newMessageText) => ({type: SEND_MESSAGE, newMessageText})
 
 
