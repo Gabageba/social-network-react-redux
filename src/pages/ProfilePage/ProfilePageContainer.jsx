@@ -1,8 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {
-  addPost, getProfile, getStatus,
-  updateNewPostText, updateStatus
+  addPost, getProfile, getStatus, updateStatus
 } from '../../redux/profileReducer'
 import ProfilePage from './ProfilePage'
 import {withRouter} from '../../Hooks/useRouter'
@@ -40,7 +39,6 @@ class ProfilePageContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    newPostText: state.profile.newPostText,
     postData: state.profile.postData,
     userProfile: state.profile.userProfile,
     isFetching: state.profile.isProfileFetching,
@@ -51,7 +49,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps, {
-    addPost, updateNewPostText, getProfile, getStatus, updateStatus
+    addPost, getProfile, getStatus, updateStatus
   }),
   withRouter,
   withAuthRedirect,

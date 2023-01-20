@@ -2,24 +2,26 @@ import React from 'react'
 import styles from './NewMessage.module.css'
 import attach from './../../../../assets/attachment.png'
 import SendSvg from '../../../../components/svgFiles/SendSvg'
+import {Field, reduxForm} from 'redux-form'
 
 
-const NewMessage = ({newMessageText, updateNewMessageText, sendMessage}) => {
+const NewMessageForm = ({handleSubmit}) => {
   return (
-    <div className={styles.newMessage}>
-      <img src={attach} alt="attach" width={24} height={24} className={styles.buttons}/>
-      <input className={styles.input}
+    <form className={styles.newMessage} onSubmit={handleSubmit}>
+      <label>
+        <Field component={'input'} type={'file'} className={styles.attachFileInput} name={'attachFileInput'}/>
+        <img src={attach} alt="attach" width={24} height={24} className={styles.button}/>
+      </label>
+      <Field component={'input'}
+             type={'text'}
+             className={styles.input}
              placeholder={'Введите новое сообщение'}
-             onChange={e => updateNewMessageText(e.target.value)}
-             value={newMessageText}/>
-      <div className={styles.buttons}>
-        <div onClick={sendMessage}>
-          <SendSvg/>
-        </div>
-      </div>
-
-    </div>
+             name={'newMessageText'}/>
+      <button className={`${styles.button} clearButton`}>
+        <SendSvg/>
+      </button>
+    </form>
   )
 }
 
-export default NewMessage
+export const NewMessageReduxForm = reduxForm({form: 'newMessageForm'})(NewMessageForm)

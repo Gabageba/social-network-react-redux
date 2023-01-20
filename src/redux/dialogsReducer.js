@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 const initialState = {
   dialogsData: [
@@ -53,8 +52,7 @@ const initialState = {
       userName: 'No name',
       message: '123'
     },
-  ],
-  newMessageText: ''
+  ]
 }
 
 export const dialogsReducer = (state = initialState, action) => {
@@ -66,27 +64,17 @@ export const dialogsReducer = (state = initialState, action) => {
         userId: 2,
         userImg: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
         userName: 'Александр Пантелеев',
-        message: state.newMessageText
+        message: action.formData.newMessageText
       }
       return {
         ...state,
-        messagesData: [...state.messagesData, newMessage],
-        newMessageText: ''
-      }
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.text
+        messagesData: [...state.messagesData, newMessage]
       }
     default:
       return state
   }
 }
 
-export const sendMessage = () => ({type: SEND_MESSAGE})
-export const updateNewMessageText = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  text
-})
+export const sendMessage = (formData) => ({type: SEND_MESSAGE, formData})
 
 

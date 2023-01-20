@@ -1,10 +1,9 @@
 import React from 'react'
 import styles from './Messages.module.css'
 import Message from './Message/Message'
-import NewMessage from './NewMessage/NewMessage'
+import {NewMessageReduxForm} from './NewMessage/NewMessage'
 
-const Messages = ({messagesData, newMessageText, updateNewMessageText, sendMessage}) => {
-
+const Messages = ({messagesData, sendMessage}) => {
   let prev = ''
 
   return (
@@ -23,7 +22,7 @@ const Messages = ({messagesData, newMessageText, updateNewMessageText, sendMessa
           }
         })
       }
-     <NewMessage newMessageText={newMessageText} sendMessage={sendMessage} updateNewMessageText={updateNewMessageText}/>
+      <NewMessageReduxForm onSubmit={sendMessage}/>
     </div>
   )
 }

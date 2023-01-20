@@ -88,3 +88,13 @@ input, textarea {
   box-sizing: border-box;
 }
 
+.clearButton {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.clearButton:hover {
+  background: transparent;
+}
+

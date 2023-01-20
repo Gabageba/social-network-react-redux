@@ -3,7 +3,6 @@ import {profileAPI} from '../api/api'
 import defaultAvatar from '../assets/noImageLarge.png'
 
 const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_IS_PROFILE_FETCHING = 'SET_IS_PROFILE_FETCHING'
 const SET_COVER_COLOR = 'SET_COVER_COLOR'
@@ -30,7 +29,6 @@ const initialState = {
       message: 'Хай',
     },
   ],
-  newPostText: '',
   userProfile: null,
   isProfileFetching: false,
   coverColor: '#fff',
@@ -45,17 +43,11 @@ export const profileReducer = (state = initialState, action) => {
         id: lastId + 1,
         name: 'Александр Пантелеев',
         avatar: 'https://i.pinimg.com/736x/86/95/54/8695540db1e9224367ed9d1a4884ccfc.jpg',
-        message: state.newPostText,
+        message: action.newPostText,
       }
       return {
         ...state,
-        postData: [newPost, ...state.postData],
-        newPostText: '',
-      }
-    case UPDATE_NEW_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.text,
+        postData: [newPost, ...state.postData]
       }
     case SET_USER_PROFILE:
       return {...state, userProfile: action.userProfile}
@@ -114,8 +106,7 @@ export const updateStatus = (status) => {
   }
 }
 
-export const addPost = () => ({type: ADD_POST})
-export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text})
+export const addPost = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userProfile})
 export const setIsProfileFetching = (isFetching) => ({type: SET_IS_PROFILE_FETCHING, isFetching})
 export const setCoverColor = (color) => ({type: SET_COVER_COLOR, color})
