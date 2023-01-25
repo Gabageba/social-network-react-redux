@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './NewPost.module.css'
 import {Field, reduxForm} from 'redux-form'
 import {maxLength, required} from '../../../utils/validators'
-import {NewPostTextarea} from '../../FormsControls/FormsControls'
+import {NewPostTextarea} from '../../../components/FormsControls/FormsControls'
 
 const maxLength100 = maxLength(100)
 
