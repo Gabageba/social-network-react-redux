@@ -1,0 +1,16 @@
+.error {
+
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.newPostTextarea {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  /*border-color: #c3073f;*/
+  /*background: rgba(195, 7, 63, 0.11);*/
+}

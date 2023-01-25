@@ -1,5 +1,6 @@
 .newPost {
   margin-bottom: 20px;
+  display: flex;
 }
 
 .newPostText {
@@ -43,3 +44,9 @@
   background: #E1E3E6;
 }
 
+.postButtonBlock {
+  text-align: right;
+  border-top: none;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}

@@ -81,10 +81,10 @@ input, textarea {
 }
 
 .contentBlock {
-  padding: 20px;
+  padding: 15px 20px ;
   background-color: #222222;
   border-radius: 8px;
-  border: 1px solid #333333;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   box-sizing: border-box;
 }
 
